@@ -25,7 +25,6 @@
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
     body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.5; }
 
-    /* شاشة تسجيل الدخول الهرمية */
     .login-wrapper {
       min-height: 100vh;
       display: flex;
@@ -46,7 +45,6 @@
     .login-header h1 { margin: 0; color: var(--primary); font-size: 24px; }
     .login-header p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
 
-    /* الشريط العلوي بعد تسجيل الدخول */
     .topbar {
       background: linear-gradient(135deg, #0a367a 0%, #0d47a1 60%, #1565c0 100%);
       color: #fff;
@@ -230,9 +228,7 @@
 </head>
 <body>
 
-  <!-- ======================================================================= -->
-  <!-- بوابة تسجيل الدخول الهرمية (تُوجّه كل مستخدم لواجهته حصراً)            -->
-  <!-- ======================================================================= -->
+  <!-- بوابة تسجيل الدخول الهرمية -->
   <div id="loginScreen" class="login-wrapper">
     <div class="login-card">
       <div class="login-header">
@@ -282,9 +278,7 @@
     </div>
   </div>
 
-  <!-- ======================================================================= -->
-  <!-- الواجهة الرئيسية بعد تسجيل الدخول                                       -->
-  <!-- ======================================================================= -->
+  <!-- الواجهة الرئيسية بعد تسجيل الدخول -->
   <div id="authenticatedShell" class="hidden">
     <div class="topbar no-print">
       <div class="brand">
@@ -299,9 +293,7 @@
     </div>
 
     <div class="container">
-      <!-- =================================================================== -->
-      <!-- 1. فضاء الجمعية / النادي الرياضي (يفتح فقط عند الدخول بكود الجمعية) -->
-      <!-- =================================================================== -->
+      <!-- 1. فضاء الجمعية / النادي الرياضي -->
       <div id="workspaceClub" class="hidden">
         <div class="card">
           <div class="card-header">
@@ -402,7 +394,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h2>3. إرفاق الملفات الإدارية والمالية المطلوبة قانوناً</h2>
+            <h2>3. إرفاق الملفات الإدارية والمالية المطلوبة قانوناً (تُرسل تلقائياً للإيميل)</h2>
           </div>
           <div class="doc-check-item">
             <div><strong>1. التقرير الأدبي السنوي</strong><div id="fileStatusMoral" style="font-size:12px; color:var(--muted);">لم يُرفق ملف بعد</div></div>
@@ -452,16 +444,14 @@
             <button class="btn btn-warning" style="padding:12px 22px;" onclick="exportClubDossierFile()">
               تصدير ملف الجمعية (club_dossier.json)
             </button>
-            <button class="btn btn-primary" style="padding:12px 22px;" onclick="sendClubDossierDirectToDjs()">
-              إرسال مباشر إلى مكتب الجمعيات بالمديرية (سحابياً) ⬅️
+            <button id="btnSendDirectDjs" class="btn btn-primary" style="padding:12px 22px;" onclick="sendClubDossierDirectToDjs()">
+              إرسال مباشر للمديرية (سحابة + إيميل المرفقات) ⬅️
             </button>
           </div>
         </div>
       </div>
 
-      <!-- =================================================================== -->
-      <!-- 2. فضاء المديرية الولائية (DJS - يفتح فقط بكود المديرية من الوزارة) -->
-      <!-- =================================================================== -->
+      <!-- 2. فضاء المديرية الولائية (DJS) -->
       <div id="workspaceDjs" class="hidden">
         <div class="sub-tabs no-print">
           <button id="tabDjsClubs" class="tab-btn active" onclick="switchDjsTab('CLUBS')">
@@ -475,7 +465,6 @@
           </button>
         </div>
 
-        <!-- تبويب 1 في المديرية: إدارة حسابات ورموز دخول الجمعيات -->
         <div id="djsClubsSection">
           <div class="card">
             <div class="card-header">
@@ -522,7 +511,6 @@
           </div>
         </div>
 
-        <!-- تبويب 2 في المديرية: تفويض ممثل المديرية البيومتري وتحضير الجلسة -->
         <div id="djsPrepSection" class="hidden">
           <div class="card" style="background:#fffde7; border-color:#fff59d;">
             <div class="card-header">
@@ -671,7 +659,6 @@
           </div>
         </div>
 
-        <!-- تبويب 3 في المديرية: استقبال نتائج الهاتف -->
         <div id="djsAuditSection" class="hidden">
           <div class="card no-print">
             <div class="card-header">
@@ -693,10 +680,8 @@
               </div>
             </div>
 
-            <!-- أولاً: المحضر الرسمي -->
             <div id="officialMinutesPrintable" class="official-doc"></div>
 
-            <!-- ثانياً: الوثيقة التابعة المستقلة (ملحق الأكواد السرية) -->
             <div class="card" style="margin-top:18px; background:#fffde7; border:1px solid #ffe082;">
               <div class="card-header">
                 <h2 style="color:#e65100;">ملحق رقم (01) تابع للمحضر — سجل تدقيق الأكواد السرية</h2>
@@ -710,9 +695,7 @@
         </div>
       </div>
 
-      <!-- =================================================================== -->
-      <!-- 3. فضاء وزارة الشباب والرياضة (MJS - يفتح فقط بكود الوزارة)          -->
-      <!-- =================================================================== -->
+      <!-- 3. فضاء وزارة الشباب والرياضة (MJS) -->
       <div id="workspaceMjs" class="hidden">
         <div class="sub-tabs no-print">
           <button id="tabMjsDjsAccounts" class="tab-btn active" onclick="switchMjsTab('ACCOUNTS')">
@@ -814,8 +797,10 @@
 
   <script>
     // =========================================================================
-    // إعدادات الاتصال السحابي بـ Firebase Firestore (مشروع associatech-web)
+    // 1. إعدادات السحابة (Firebase Firestore) + جسر الإيميل (Google Apps Script)
     // =========================================================================
+    const EMAIL_BRIDGE_URL = "https://script.google.com/macros/s/AKfycbzS58QUlL4boVFNPj9B6np9FaaB9G6P7CCPW5_gX6xDlA-V2hJ18pmjdS1PV90Zo38/exec";
+
     const firebaseConfig = {
       apiKey: "AIzaSyAiNTuVOzH6lyLsufeYKy3S1_dnSzF8yUI",
       authDomain: "associatech-web.firebaseapp.com",
@@ -829,6 +814,7 @@
     let db = null;
     let cloudDocRef = null;
     let isCloudConnected = false;
+    let clubAttachedFilesData = {}; // تخزين مؤقت للملفات المرفقة لإرسالها عبر الإيميل دون إثقال قاعدة البيانات
 
     function updateCloudBadge(text, isOk) {
       const badge = document.getElementById('cloudStatusBadge');
@@ -851,7 +837,6 @@
         db = firebase.firestore();
         cloudDocRef = db.collection('associatech_dz').doc('portal_state');
 
-        // الاستماع الفوري للتحديثات السحابية
         cloudDocRef.onSnapshot((doc) => {
           isCloudConnected = true;
           updateCloudBadge('☁️ السحابة: متصل ✅', true);
@@ -866,7 +851,6 @@
               } catch (e) {}
             }
           } else {
-            // أول تشغيل: رفع الحالة الافتراضية إلى السحابة
             pushStateToCloud();
           }
         }, (error) => {
@@ -905,7 +889,7 @@
     }
 
     // =========================================================================
-    // الحالة المحلية والتطبيق
+    // 2. الحالة المحلية والتطبيق
     // =========================================================================
     let state = {
       djsAccounts: [
@@ -1253,7 +1237,22 @@
       if (!file) return;
       state.clubDocs[docKey] = file.name;
       const mapIds = { moral: 'fileStatusMoral', financial: 'fileStatusFinancial', budget: 'fileStatusBudget' };
-      if (mapIds[docKey]) document.getElementById(mapIds[docKey]).innerHTML = `<span style="color:#2e7d32; font-weight:bold;">مُرفق ✅: ${file.name}</span>`;
+      if (mapIds[docKey]) {
+        document.getElementById(mapIds[docKey]).innerHTML = `<span style="color:#2e7d32; font-weight:bold;">مُرفق وجاهز للإرسال ✅: ${file.name}</span>`;
+      }
+
+      // قراءة الملف كـ Base64 لإرساله مرفقاً عبر الإيميل
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const resultStr = e.target.result || '';
+        const base64Part = resultStr.includes(',') ? resultStr.split(',')[1] : resultStr;
+        clubAttachedFilesData[docKey] = {
+          name: file.name,
+          mimeType: file.type || 'application/pdf',
+          base64: base64Part
+        };
+      };
+      reader.readAsDataURL(file);
       saveState();
     }
 
@@ -1314,9 +1313,35 @@
     }
 
     function sendClubDossierDirectToDjs() {
-      state.clubInboxDossiers.push(buildClubDossierPayload());
+      const payload = buildClubDossierPayload();
+      state.clubInboxDossiers.push(payload);
       saveState();
-      alert('تم إرسال ملف الجمعية وقائمة المنخرطين والوثائق بنجاح إلى مديرية الشباب والرياضة (ومزامنته سحابياً) ✅.');
+
+      // إرسال البيانات والمرفقات عبر جسر الإيميل (Google Apps Script)
+      const btn = document.getElementById('btnSendDirectDjs');
+      if (btn) btn.textContent = 'جاري الإرسال للسحابة والإيميل... ⏳';
+
+      const emailPayload = {
+        associationName: payload.associationName,
+        approvalNumber: payload.approvalNumber,
+        requestedAssemblyType: payload.requestedAssemblyType,
+        requestedDate: payload.requestedDate,
+        membersCount: (payload.members || []).length,
+        files: Object.values(clubAttachedFilesData)
+      };
+
+      fetch(EMAIL_BRIDGE_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(emailPayload)
+      }).then(() => {
+        if (btn) btn.textContent = 'إرسال مباشر للمديرية (سحابة + إيميل المرفقات) ⬅️';
+        alert('تم إرسال ملف الجمعية بنجاح إلى المديرية (مزامنة سحابية فورية + إرسال المرفقات إلى البريد الإلكتروني) ✅.');
+      }).catch(() => {
+        if (btn) btn.textContent = 'إرسال مباشر للمديرية (سحابة + إيميل المرفقات) ⬅️';
+        alert('تمت المزامنة السحابية مع المديرية ✅ (تحقق من الاتصال بالإنترنت لإرسال الإيميل).');
+      });
     }
 
     function refreshDjsInboxDropdown() {
