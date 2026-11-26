@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AssociaTech-DZ | المنصة الرقمية لتسيير الجمعيات الرياضية</title>
+  <!-- مكتبات Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <style>
     :root {
       --primary: #0d47a1;
@@ -235,6 +238,7 @@
       <div class="login-header">
         <h1>AssociaTech-DZ</h1>
         <p>البوابة الرقمية الموحدة لتسيير الجمعيات الرياضية<br>التسلسل الهرمي: وزارة الشباب والرياضة ➔ المديريات الولائية ➔ الجمعيات</p>
+        <div id="loginCloudStatus" style="margin-top:8px; font-size:12px; font-weight:bold; color:#0d47a1;">☁️ السحابة: جاري الاتصال...</div>
       </div>
 
       <div id="loginErrorBox" class="alert alert-danger hidden"></div>
@@ -288,6 +292,7 @@
         <p id="topbarSubtitle"></p>
       </div>
       <div class="user-session-bar">
+        <span id="cloudStatusBadge" class="role-pill">☁️ السحابة: جاري الاتصال...</span>
         <span id="activeAccountBadge" class="role-pill"></span>
         <button class="btn btn-danger btn-sm" onclick="logout()">تسجيل الخروج</button>
       </div>
@@ -448,7 +453,7 @@
               تصدير ملف الجمعية (club_dossier.json)
             </button>
             <button class="btn btn-primary" style="padding:12px 22px;" onclick="sendClubDossierDirectToDjs()">
-              إرسال مباشر إلى مكتب الجمعيات بالمديرية ⬅️
+              إرسال مباشر إلى مكتب الجمعيات بالمديرية (سحابياً) ⬅️
             </button>
           </div>
         </div>
@@ -460,13 +465,13 @@
       <div id="workspaceDjs" class="hidden">
         <div class="sub-tabs no-print">
           <button id="tabDjsClubs" class="tab-btn active" onclick="switchDjsTab('CLUBS')">
-1. منح رموز دخول الجمعيات (إصدار / إظهار / تجديد)
+            1. منح رموز دخول الجمعيات (إصدار / إظهار / تجديد)
           </button>
           <button id="tabDjsPrep" class="tab-btn" onclick="switchDjsTab('PREP')">
-2. تفويض ممثل المديرية وتحضير الجمعية (تصدير للهاتف)
+            2. تفويض ممثل المديرية وتحضير الجمعية (تصدير للهاتف)
           </button>
           <button id="tabDjsAudit" class="tab-btn" onclick="switchDjsTab('AUDIT')">
-3. استقبال نتائج الهاتف وتدقيق الأكواد (رفع للوزارة)
+            3. استقبال نتائج الهاتف وتدقيق الأكواد (رفع للوزارة)
           </button>
         </div>
 
@@ -688,7 +693,7 @@
               </div>
             </div>
 
-            <!-- أولاً: المحضر الرسمي (خالي من رقم NIN الممثل ومنفصل عن سجل الأكواد) -->
+            <!-- أولاً: المحضر الرسمي -->
             <div id="officialMinutesPrintable" class="official-doc"></div>
 
             <!-- ثانياً: الوثيقة التابعة المستقلة (ملحق الأكواد السرية) -->
@@ -711,10 +716,10 @@
       <div id="workspaceMjs" class="hidden">
         <div class="sub-tabs no-print">
           <button id="tabMjsDjsAccounts" class="tab-btn active" onclick="switchMjsTab('ACCOUNTS')">
-1. منح رموز دخول المديريات الولائية (إصدار / إظهار / تجديد)
+            1. منح رموز دخول المديريات الولائية (إصدار / إظهار / تجديد)
           </button>
           <button id="tabMjsDashboard" class="tab-btn" onclick="switchMjsTab('DASHBOARD')">
-2. لوحة القيادة الوطنية والرقابة على تعدد العهدات
+            2. لوحة القيادة الوطنية والرقابة على تعدد العهدات
           </button>
         </div>
 
@@ -808,6 +813,100 @@
   </div>
 
   <script>
+    // =========================================================================
+    // إعدادات الاتصال السحابي بـ Firebase Firestore (مشروع associatech-web)
+    // =========================================================================
+    const firebaseConfig = {
+      apiKey: "AIzaSyAiNTuVOzH6lyLsufeYKy3S1_dnSzF8yUI",
+      authDomain: "associatech-web.firebaseapp.com",
+      projectId: "associatech-web",
+      storageBucket: "associatech-web.firebasestorage.app",
+      messagingSenderId: "727995233621",
+      appId: "1:727995233621:web:b62940daf51f6ea133ebdc",
+      measurementId: "G-ZT619TYPSQ"
+    };
+
+    let db = null;
+    let cloudDocRef = null;
+    let isCloudConnected = false;
+
+    function updateCloudBadge(text, isOk) {
+      const badge = document.getElementById('cloudStatusBadge');
+      const loginBadge = document.getElementById('loginCloudStatus');
+      if (badge) {
+        badge.textContent = text;
+        badge.style.background = isOk ? 'rgba(46,125,50,0.45)' : 'rgba(239,108,0,0.45)';
+      }
+      if (loginBadge) {
+        loginBadge.textContent = text;
+        loginBadge.style.color = isOk ? '#2e7d32' : '#ef6c00';
+      }
+    }
+
+    function initFirebaseCloud() {
+      try {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+        }
+        db = firebase.firestore();
+        cloudDocRef = db.collection('associatech_dz').doc('portal_state');
+
+        // الاستماع الفوري للتحديثات السحابية
+        cloudDocRef.onSnapshot((doc) => {
+          isCloudConnected = true;
+          updateCloudBadge('☁️ السحابة: متصل ✅', true);
+          if (doc.exists) {
+            const remoteData = doc.data();
+            if (remoteData && remoteData.payloadJson) {
+              try {
+                const parsed = JSON.parse(remoteData.payloadJson);
+                state = { ...state, ...parsed };
+                localStorage.setItem('associatech_dz_portal_v3', JSON.stringify(state));
+                refreshActiveWorkspaceUI();
+              } catch (e) {}
+            }
+          } else {
+            // أول تشغيل: رفع الحالة الافتراضية إلى السحابة
+            pushStateToCloud();
+          }
+        }, (error) => {
+          console.warn('Firestore sync error:', error);
+          isCloudConnected = false;
+          updateCloudBadge('☁️ السحابة: وضع محلي', false);
+        });
+      } catch (err) {
+        console.warn('Firebase init error:', err);
+        updateCloudBadge('☁️ السحابة: وضع محلي', false);
+      }
+    }
+
+    function pushStateToCloud() {
+      if (!cloudDocRef) return;
+      cloudDocRef.set({
+        payloadJson: JSON.stringify(state),
+        updatedAt: new Date().toISOString()
+      }, { merge: true }).catch((err) => {
+        console.warn('Cloud save failed:', err);
+      });
+    }
+
+    function refreshActiveWorkspaceUI() {
+      if (!currentSessionUser) return;
+      if (currentSessionUser.role === 'MJS') {
+        renderMjsDjsAccountsTable();
+        renderMinistryDashboard();
+      } else if (currentSessionUser.role === 'DJS') {
+        renderDjsClubAccountsTable();
+        refreshDjsInboxDropdown();
+        renderAllDjsTables();
+      } else if (currentSessionUser.role === 'CLUB') {
+        renderClubTables();
+      }
+    }
+
+    // =========================================================================
+    // الحالة المحلية والتطبيق
+    // =========================================================================
     let state = {
       djsAccounts: [
         { wilayaCode: '04', wilayaName: 'أم البواقي', username: 'DJS-04', accessCode: 'DJS-04-8821', revealed: false },
@@ -845,10 +944,13 @@
       }
       if (!state.clubMembers || state.clubMembers.length === 0) loadSampleClubMembers();
       if (!state.members || state.members.length === 0) loadSampleSession('AGO');
+
+      initFirebaseCloud();
     }
 
     function saveState() {
       localStorage.setItem('associatech_dz_portal_v3', JSON.stringify(state));
+      pushStateToCloud();
     }
 
     function toggleDemoCredentials() {
@@ -1214,7 +1316,7 @@
     function sendClubDossierDirectToDjs() {
       state.clubInboxDossiers.push(buildClubDossierPayload());
       saveState();
-      alert('تم إرسال ملف الجمعية وقائمة المنخرطين والوثائق بنجاح إلى مديرية الشباب والرياضة ✅.');
+      alert('تم إرسال ملف الجمعية وقائمة المنخرطين والوثائق بنجاح إلى مديرية الشباب والرياضة (ومزامنته سحابياً) ✅.');
     }
 
     function refreshDjsInboxDropdown() {
@@ -1452,7 +1554,6 @@
         '<tr><td colspan="3" style="text-align:center; color:gray;">لا توجد بطاقات اقتراع مسجلة.</td></tr>';
     }
 
-    // المحضر الرسمي: بدون رقم NIN للممثل، ومفصول تماماً عن ملحق الأكواد السرية
     function buildOfficialDocumentHtml(res) {
       const q = res.quorumStats || {};
       const titleText = res.isCancelledForQuorum
