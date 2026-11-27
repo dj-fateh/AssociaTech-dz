@@ -185,7 +185,7 @@
       </div>
     </div>
 
-    <!-- تبويب جديد في مكتب الجمعيات: الترشحات وتسجيل الطعون -->
+    <!-- تبويب الترشحات وتسجيل الطعون -->
     <div id="tab-djs-appeals" class="tab-panel hidden">
       <div class="card">
         <h3>📝 استقبال طلبات الترشح الإلكترونية وتسجيل الطعون (لإحالتها لمدير الشباب والرياضة)</h3>
@@ -369,7 +369,7 @@
   </div>
 </div>
 
-<!-- نافذة منبثقة عامة (تفاصيل المؤشرات أو معاينة المحضر) -->
+<!-- نافذة منبثقة عامة -->
 <div id="genericModal" class="modal-backdrop hidden" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -385,6 +385,7 @@ const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/associatech-
 const EMAIL_BRIDGE_URL = "https://script.google.com/macros/s/AKfycbzS58QUlL4boVFNPj9B6np9FaaB9G6P7CCPW5_gX6xDlA-V2hJ18pmjdS1PV90Zo38/exec";
 const AES_SECRET_PASSPHRASE = "AssociaTech-DZ-2026-Gov-SecureKey!";
 const LOCAL_KEY = "associatech_dz_v3_state";
+const SESSION_USER_KEY = "associatech_session_user";
 
 let currentUser = null;
 let customDocs = [];
@@ -534,26 +535,34 @@ function hasPendingAppealsFor(assocId, assocName) {
   return state.appeals.some(a => a.status === "PENDING" && (a.assocId === assocId || a.assocName === assocName));
 }
 
+function openUserSessionUI(acc) {
+  currentUser = acc;
+  document.getElementById("loginSection").classList.add("hidden");
+  document.getElementById("appSection").classList.remove("hidden");
+  document.getElementById("logoutBtn").classList.remove("hidden");
+  const ub = document.getElementById("userBadge");
+  ub.classList.remove("hidden");
+  ub.textContent = `👤 ${acc.name}`;
+  buildTabsForRole(acc.role);
+}
+
 // الدخول والتنقل
 async function handleLogin() {
   const u = document.getElementById("loginUser").value.trim();
   const c = document.getElementById("loginCode").value.trim();
   const acc = state.accounts.find(a => a.username.toLowerCase() === u.toLowerCase() && a.code === c);
   if (!acc) return document.getElementById("loginMsg").textContent = "❌ بيانات الدخول غير صحيحة.";
+  document.getElementById("loginMsg").textContent = "";
+  sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(acc));
   currentUser = acc;
   logAudit("LOGIN", `دخول ${acc.name}`);
   await saveCloudState();
-
-  document.getElementById("loginSection").classList.add("hidden");
-  document.getElementById("appSection").classList.remove("hidden");
-  document.getElementById("logoutBtn").classList.remove("hidden");
-  const ub = document.getElementById("userBadge");
-  ub.classList.remove("hidden"); ub.textContent = `👤 ${acc.name}`;
-  buildTabsForRole(acc.role);
+  openUserSessionUI(acc);
 }
 
 function logout() {
   currentUser = null;
+  sessionStorage.removeItem(SESSION_USER_KEY);
   document.getElementById("appSection").classList.add("hidden");
   document.getElementById("loginSection").classList.remove("hidden");
   document.getElementById("logoutBtn").classList.add("hidden");
@@ -744,7 +753,7 @@ async function registerAppealForDirector() {
   renderAll();
 }
 
-// بت مدير الشباب والرياضة في الطعن (إضافة تلقائية عند القبول + إعلام صاحب الطعن بالإيميل)
+// بت مدير الشباب والرياضة في الطعن
 async function decideAppeal(appId, status) {
   const a = state.appeals.find(x => x.id === appId); if (!a) return;
   const note = prompt(`أدخل التعليل الرسمي لقرار (${status === "ACCEPTED" ? "قبول" : "رفض"}) الطعن:`);
@@ -753,7 +762,6 @@ async function decideAppeal(appId, status) {
   a.status = status;
   a.decisionNote = note.trim();
 
-  // إذا قُبل الطعن، يُضاف العضو/المترشح تلقائياً إلى قائمة الجمعية الانتخابية
   if (status === "ACCEPTED") {
     const d = state.dossiers.find(x => x.id === a.dossierId || x.assocName === a.assocName);
     if (d && !d.members.some(m => m.nin === a.nin)) {
@@ -1114,7 +1122,6 @@ function renderSelectedResult() {
 function renderMinisterAudit() {
   const q = (document.getElementById("auditSearch")?.value || "").toLowerCase();
   const wf = (document.getElementById("auditWilayaFilter")?.value || "").trim();
-  // استبعاد تسجيلات الدخول (LOGIN) تماماً من فضاء الوزير
   const rows = state.auditLogs.filter(l =>
     l.action !== "LOGIN" &&
     (!wf || l.wilaya === wf) &&
@@ -1126,8 +1133,13 @@ function renderMinisterAudit() {
   ).join("") || `<tr><td colspan="5">لا توجد اختلالات أو عمليات مسجلة.</td></tr>`;
 }
 
-// تشغيل أولي + مزامنة آلية كل 30 ثانية
-loadCloudState();
+// التشغيل الأولي واستعادة الجلسة عند التحديث
+loadCloudState().then(() => {
+  const savedUser = sessionStorage.getItem(SESSION_USER_KEY);
+  if (savedUser) {
+    try { openUserSessionUI(JSON.parse(savedUser)); } catch {}
+  }
+});
 setInterval(() => { if (currentUser) loadCloudState(false); }, 30000);
 </script>
 </body>
