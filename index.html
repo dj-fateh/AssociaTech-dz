@@ -6,17 +6,9 @@
 <title>AssociaTech-DZ | البوابة الرقمية للحوكمة والرقابة الرياضية</title>
 <style>
   :root {
-    --primary: #0f4c81;
-    --primary-dark: #093257;
-    --accent: #0ea5a4;
-    --success: #15803d;
-    --warning: #b45309;
-    --danger: #b91c1c;
-    --bg: #f1f5f9;
-    --card: #ffffff;
-    --border: #cbd5e1;
-    --text: #0f172a;
-    --muted: #64748b;
+    --primary: #0f4c81; --primary-dark: #093257; --accent: #0ea5a4;
+    --success: #15803d; --warning: #b45309; --danger: #b91c1c;
+    --bg: #f1f5f9; --card: #ffffff; --border: #cbd5e1; --text: #0f172a; --muted: #64748b;
   }
   * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
   body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.5; }
@@ -28,38 +20,24 @@
   }
   header h1 { margin: 0; font-size: 1.25rem; }
   header small { opacity: 0.85; font-size: 0.85rem; }
-  .status-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .badge {
-    padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
-    display: inline-flex; align-items: center; gap: 5px;
-  }
+  .status-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge { padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
   .badge-ok { background: #dcfce7; color: #166534; }
   .badge-warn { background: #fef3c7; color: #92400e; }
   .badge-danger { background: #fee2e2; color: #991b1b; }
   .badge-info { background: #e0f2fe; color: #075985; }
   .container { max-width: 1280px; margin: 20px auto; padding: 0 15px; }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 18px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
   .card h2, .card h3 { margin-top: 0; color: var(--primary-dark); border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
   .grid { display: grid; gap: 14px; }
   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   .grid-4 { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
   label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; }
-  input, select, textarea {
-    width: 100%; padding: 9px 11px; border: 1px solid var(--border);
-    border-radius: 6px; font-size: 0.92rem; background: #fff;
-  }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
-  button {
-    padding: 9px 15px; border: none; border-radius: 6px; font-weight: 600;
-    cursor: pointer; font-size: 0.9rem; transition: 0.15s;
-  }
+  input, select, textarea { width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.92rem; background: #fff; }
+  button { padding: 9px 15px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.15s; }
   button:disabled { opacity: 0.45; cursor: not-allowed; }
   .btn-primary { background: var(--primary); color: #fff; }
-  .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
   .btn-success { background: var(--success); color: #fff; }
   .btn-warning { background: var(--warning); color: #fff; }
   .btn-danger { background: var(--danger); color: #fff; }
@@ -72,30 +50,16 @@
   th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: right; }
   th { background: #f8fafc; color: var(--primary-dark); }
   .table-wrap { overflow-x: auto; }
-  .kpi-card {
-    background: linear-gradient(135deg, #fff, #f8fafc); border: 1px solid var(--border);
-    border-right: 5px solid var(--primary); border-radius: 8px; padding: 14px;
-    cursor: pointer; transition: transform 0.15s;
-  }
-  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+  .kpi-card { background: linear-gradient(135deg, #fff, #f8fafc); border: 1px solid var(--border); border-right: 5px solid var(--primary); border-radius: 8px; padding: 14px; cursor: pointer; }
   .kpi-val { font-size: 1.6rem; font-weight: 800; color: var(--primary-dark); }
   .kpi-sub { font-size: 0.85rem; color: var(--muted); }
   .hidden { display: none !important; }
   .checklist-box { background: #f8fafc; border: 1px solid #94a3b8; border-radius: 8px; padding: 14px; margin: 12px 0; }
   .chk-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
   .chk-row input[type="checkbox"] { width: auto; transform: scale(1.2); }
-  .ephemeral-code {
-    background: #fef9c3; border: 2px dashed #ca8a04; padding: 12px; border-radius: 8px;
-    margin-top: 10px; text-align: center; font-weight: bold;
-  }
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(15,23,42,0.6);
-    display: flex; align-items: center; justify-content: center; z-index: 999; padding: 15px;
-  }
-  .modal {
-    background: #fff; border-radius: 10px; max-width: 750px; width: 100%;
-    max-height: 85vh; overflow-y: auto; padding: 20px;
-  }
+  .ephemeral-code { background: #fef9c3; border: 2px dashed #ca8a04; padding: 12px; border-radius: 8px; margin-top: 10px; text-align: center; font-weight: bold; }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.6); display: flex; align-items: center; justify-content: center; z-index: 999; padding: 15px; }
+  .modal { background: #fff; border-radius: 10px; max-width: 780px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 20px; }
   .alert-box { padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 0.9rem; }
   .alert-danger { background: #fee2e2; color: #991b1b; border-right: 4px solid #dc2626; }
   .alert-info { background: #e0f2fe; color: #075985; border-right: 4px solid #0284c7; }
@@ -112,76 +76,65 @@
 <header>
   <div>
     <h1>🏛️ AssociaTech-DZ — البوابة الإدارية والرقابية</h1>
-    <small>منظومة حوكمة الجمعيات الرياضية | تشفير AES-256 + سجل تدقيق غير قابل للتعديل</small>
+    <small>مزامنة سحابية آلية | تشفير AES-256 | قفل الطعون الانتخابية</small>
   </div>
   <div class="status-bar">
-    <span id="cloudStatus" class="badge badge-warn">⏳ جاري الاتصال بالسحابة...</span>
+    <span id="cloudStatus" class="badge badge-warn">⏳ جاري الاتصال...</span>
+    <button class="btn-outline btn-sm" style="background:#fff;" onclick="loadCloudState(true)">🔄 تحديث سحابي</button>
     <span id="userBadge" class="badge badge-info hidden"></span>
-    <button id="logoutBtn" class="btn-danger btn-sm hidden" onclick="logout()">تسجيل الخروج</button>
+    <button id="logoutBtn" class="btn-danger btn-sm hidden" onclick="logout()">خروج</button>
   </div>
 </header>
 
 <div class="container">
 
-  <!-- ==================== شاشة الدخول الموحدة ==================== -->
+  <!-- ==================== شاشة الدخول ==================== -->
   <div id="loginSection" class="card" style="max-width:480px; margin:40px auto;">
     <h2>🔐 بوابة الدخول الهرمية (4 مستويات)</h2>
-    <p style="color:var(--muted); font-size:0.9rem;">مخصصة حصراً لإطارات وزارة ومديريات الشباب والرياضة. (الجمعيات والممثلون يعملون عبر تطبيقات الهاتف).</p>
-    <div style="margin-bottom:12px;">
-      <label>اسم المستخدم</label>
-      <input id="loginUser" placeholder="مثال: DJS-04-BUREAU أو MJS-MINISTER">
-    </div>
-    <div style="margin-bottom:14px;">
-      <label>رمز الدخول السري</label>
-      <input id="loginCode" type="password" placeholder="أدخل رمز الدخول">
-    </div>
+    <div style="margin-bottom:12px;"><label>اسم المستخدم</label><input id="loginUser" placeholder="مثال: DJS-04-BUREAU أو MJS-MINISTER"></div>
+    <div style="margin-bottom:14px;"><label>رمز الدخول السري</label><input id="loginCode" type="password" placeholder="أدخل رمز الدخول"></div>
     <button class="btn-primary" style="width:100%;" onclick="handleLogin()">دخول آمن مشفّر</button>
     <div id="loginMsg" style="color:var(--danger); margin-top:10px; font-weight:600;"></div>
   </div>
 
-  <!-- ==================== الفضاء الرئيسي بعد الدخول ==================== -->
+  <!-- ==================== الفضاء الرئيسي ==================== -->
   <div id="appSection" class="hidden">
     <div id="navTabs" class="tabs"></div>
 
     <!-- ==================== 1. مكتب الجمعيات (DJS-BUREAU) ==================== -->
-    <!-- تبويب 1: إدارة الجمعيات والأكواد -->
     <div id="tab-djs-assoc" class="tab-panel hidden">
       <div class="card">
         <h3>➕ إنشاء حساب جمعية رياضية (تطبيق الجمعيات)</h3>
         <div class="grid grid-2">
-          <div><label>اسم الجمعية الرياضية</label><input id="newAssocName" placeholder="مثال: النادي الرياضي الوداد سوق نعمان"></div>
-          <div><label>رقم الاعتماد القانوني</label><input id="newAssocAcc" placeholder="مثال: 04/2026/118"></div>
-          <div><label>اسم المستخدم للتطبيق</label><input id="newAssocUser" placeholder="مثال: CLUB-WIDAD-04"></div>
+          <div><label>اسم الجمعية</label><input id="newAssocName" placeholder="النادي الرياضي..."></div>
+          <div><label>رقم الاعتماد القانوني</label><input id="newAssocAcc" placeholder="04/2026/118"></div>
+          <div><label>اسم المستخدم للتطبيق</label><input id="newAssocUser" placeholder="CLUB-WIDAD-04"></div>
           <div><label>البريد الإلكتروني الرسمي للجمعية</label><input id="newAssocEmail" type="email" placeholder="club@example.com"></div>
         </div>
-        <button class="btn-primary" style="margin-top:12px;" onclick="createAssociation()">إنشاء الحساب وتوليد رمز الدخول (يُرسل للإيميل)</button>
+        <button class="btn-primary" style="margin-top:12px;" onclick="createAssociation()">إنشاء الحساب وتوليد الرمز (إرسال للإيميل)</button>
         <div id="ephemeralCodeBox" class="ephemeral-code hidden"></div>
       </div>
-
       <div class="card">
-        <h3>📋 الجمعيات المسجلة بالولاية (الرموز مخفية نهائياً)</h3>
+        <h3>📋 الجمعيات المسجلة بالولاية</h3>
         <div class="table-wrap">
           <table>
-            <thead>
-              <tr><th>الجمعية</th><th>رقم الاعتماد</th><th>المستخدم</th><th>البريد الإلكتروني</th><th>الرمز</th><th>إجراء</th></tr>
-            </thead>
+            <thead><tr><th>الجمعية</th><th>الاعتماد</th><th>المستخدم</th><th>البريد</th><th>الرمز</th><th>إجراء</th></tr></thead>
             <tbody id="assocTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- تبويب 2: الممثلون والملفات وتحضير الجمعية -->
     <div id="tab-djs-prep" class="tab-panel hidden">
       <div class="card">
-        <h3>🪪 طلبات التسجيل الأولي لممثلي المديرية (البطاقة البيومترية)</h3>
+        <h3>🪪 طلبات التسجيل الأولي لممثلي المديرية (تصل آلياً من السحابة)</h3>
         <div style="margin-bottom:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <input type="file" id="importRepFile" accept=".json" style="max-width:300px;" onchange="importRepRequest(event)">
-          <small style="color:var(--muted);">استيراد ملف التسجيل الأولي (JSON) أو المصادقة على الطلبات الواردة سحابياً.</small>
+          <input type="file" accept=".json" style="max-width:280px;" onchange="importRepRequest(event)">
+          <small style="color:var(--muted);">الاسترداد يتم آلياً من السحابة، ويبقى هذا الزر احتياطياً للاستيراد اليدوي.</small>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>الاسم واللقب</th><th>رقم NIN (مقنّع)</th><th>البريد</th><th>الحالة</th><th>المصادقة</th></tr></thead>
+            <thead><tr><th>الاسم واللقب</th><th>NIN</th><th>البريد</th><th>الحالة</th><th>المصادقة</th></tr></thead>
             <tbody id="repsTableBody"></tbody>
           </table>
         </div>
@@ -190,103 +143,117 @@
       <div class="card">
         <h3>📥 ملفات الجمعيات الواردة ومراقبة قائمة الأعضاء</h3>
         <div style="margin-bottom:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <input type="file" id="importDossierFile" accept=".json" style="max-width:300px;" onchange="importDossierJson(event)">
           <select id="dossierSelect" style="max-width:340px;" onchange="renderSelectedDossier()"></select>
+          <input type="file" accept=".json" style="max-width:280px;" onchange="importDossierJson(event)">
         </div>
 
         <div id="dossierDetailsArea" class="hidden">
           <div class="alert-box alert-info" id="dossierMetaInfo"></div>
+          <div id="dossierAppealLockAlert" class="alert-box alert-danger hidden"></div>
 
-          <h4>👥 مراقبة قائمة الأعضاء (شطب / إضافة بتعليل إجباري مسجّل رقمياً)</h4>
+          <h4>👥 مراقبة قائمة الأعضاء (شطب / إضافة بتعليل إجباري)</h4>
           <div class="grid grid-4" style="background:#f8fafc; padding:10px; border-radius:6px; margin-bottom:10px;">
             <div><label>الاسم واللقب</label><input id="addMemName"></div>
-            <div><label>رقم التعريف (NIN)</label><input id="addMemNin"></div>
+            <div><label>رقم NIN</label><input id="addMemNin"></div>
             <div><label>البريد الإلكتروني</label><input id="addMemEmail" type="email"></div>
-            <div><label>رقم الهاتف</label><input id="addMemPhone"></div>
-            <div><label>وضعية الاشتراك</label><select id="addMemPaid"><option value="true">مسدّد ✅</option><option value="false">غير مسدّد ❌</option></select></div>
-            <div style="grid-column: span 2;"><label>التعليل القانوني للإضافة (إجباري)</label><input id="addMemReason" placeholder="مثال: تصحيح سهو بناءً على وصل الاشتراك رقم..."></div>
-            <div style="display:flex; align-items:end;"><button class="btn-success" style="width:100%;" onclick="addMemberWithReason()">+ إضافة عضو</button></div>
+            <div><label>الهاتف</label><input id="addMemPhone"></div>
+            <div><label>الاشتراك</label><select id="addMemPaid"><option value="true">مسدّد ✅</option><option value="false">غير مسدّد ❌</option></select></div>
+            <div style="grid-column: span 2;"><label>التعليل القانوني (إجباري)</label><input id="addMemReason"></div>
+            <div style="display:flex; align-items:end;"><button class="btn-success" style="width:100%;" onclick="addMemberWithReason()">+ إضافة</button></div>
           </div>
 
           <div class="table-wrap">
             <table>
-              <thead><tr><th>العضو</th><th>NIN</th><th>الإيميل / الهاتف</th><th>الاشتراك</th><th>إجراء رقابي</th></tr></thead>
+              <thead><tr><th>العضو</th><th>NIN</th><th>الإيميل / الهاتف</th><th>الاشتراك</th><th>إجراء</th></tr></thead>
               <tbody id="membersTableBody"></tbody>
             </table>
           </div>
 
           <hr style="margin:18px 0;">
-          <h4>📤 تفويض الممثل وإرسال حزمة الجلسة والاستدعاءات</h4>
+          <h4>📤 تفويض الممثل وإرسال الجلسة والاستدعاءات</h4>
           <div class="grid grid-3">
-            <div><label>اختيار ممثل المديرية المعتمد</label><select id="approvedRepSelect"></select></div>
-            <div><label>تاريخ وتوقيت الجمعية العامة</label><input id="sessionDate" type="datetime-local"></div>
-            <div><label>مكان الانعقاد</label><input id="sessionPlace" placeholder="مثال: القاعة متعددة الرياضات"></div>
+            <div><label>ممثل المديرية المعتمد</label><select id="approvedRepSelect"></select></div>
+            <div><label>تاريخ وتوقيت الجمعية</label><input id="sessionDate" type="datetime-local"></div>
+            <div><label>مكان الانعقاد</label><input id="sessionPlace" placeholder="القاعة متعددة الرياضات"></div>
           </div>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn-primary" onclick="dispatchSessionToRep(true)">☁️ تفويض الممثل وإرسال الجلسة لتطبيقه</button>
-            <button class="btn-outline" onclick="dispatchSessionToRep(false)">💾 تصدير حزمة مشفّرة (JSON احتياطي)</button>
+            <button id="dispatchCloudBtn" class="btn-primary" onclick="dispatchSessionToRep(true)">☁️ تفويض الممثل وإرسال الجلسة آلياً</button>
+            <button id="dispatchJsonBtn" class="btn-outline" onclick="dispatchSessionToRep(false)">💾 تصدير حزمة JSON احتياطية</button>
             <button class="btn-warning" onclick="sendElectronicInvitations()">📧 إرسال الاستدعاءات الإلكترونية للأعضاء</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- تبويب 3: تدقيق النتائج والاعتماد (القفل الإداري) -->
+    <!-- تبويب جديد في مكتب الجمعيات: الترشحات وتسجيل الطعون -->
+    <div id="tab-djs-appeals" class="tab-panel hidden">
+      <div class="card">
+        <h3>📝 استقبال طلبات الترشح الإلكترونية وتسجيل الطعون (لإحالتها لمدير الشباب والرياضة)</h3>
+        <div class="grid grid-2">
+          <div><label>الجمعية المعنية</label><select id="appealDossierSelect"></select></div>
+          <div><label>اسم المترشح / صاحب الطعن</label><input id="appealName" placeholder="الاسم واللقب الكامل"></div>
+          <div><label>رقم التعريف الوطني (NIN)</label><input id="appealNin" placeholder="18 رقماً"></div>
+          <div><label>البريد الإلكتروني لصاحب الطعن (لإعلامه بالقرار)</label><input id="appealEmail" type="email" placeholder="candidate@example.com"></div>
+          <div><label>رقم الهاتف</label><input id="appealPhone" placeholder="06..."></div>
+          <div><label>إرفاق ملف الطعن أو الترشح (PDF / صورة - اختياري)</label><input id="appealFile" type="file" accept=".pdf,image/*"></div>
+        </div>
+        <div style="margin-top:10px;">
+          <label>التعليل الكتابي / موضوع الطعن (إجباري)</label>
+          <textarea id="appealSubject" rows="3" placeholder="اكتب تفاصيل الترشح المرفوض أو موضوع الطعن المعلّل لإحالته لمدير الشباب والرياضة..."></textarea>
+        </div>
+        <button class="btn-warning" style="margin-top:12px;" onclick="registerAppealForDirector()">📨 تسجيل الطعن وإحالته لمدير الشباب والرياضة</button>
+      </div>
+      <div class="card">
+        <h3>📋 سجل الطعون المسجلة وحالتها</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الجمعية</th><th>صاحب الطعن</th><th>الموضوع / المرفق</th><th>الحالة</th><th>قرار المدير</th></tr></thead>
+            <tbody id="bureauAppealsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <div id="tab-djs-verify" class="tab-panel hidden">
       <div class="card">
-        <h3>✅ تدقيق نتائج الجلسة واعتماد المحضر (القفل الإداري مع المفتشية)</h3>
+        <h3>✅ تدقيق نتائج الجلسة واعتماد المحضر (القفل الإداري + قفل الطعون)</h3>
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
-          <input type="file" accept=".json" style="max-width:300px;" onchange="importResultJson(event)">
           <select id="resultSelect" style="max-width:360px;" onchange="renderSelectedResult()"></select>
+          <input type="file" accept=".json" style="max-width:280px;" onchange="importResultJson(event)">
         </div>
 
         <div id="resultVerifyArea" class="hidden">
           <div id="resultSummaryBox" class="alert-box alert-info"></div>
+          <div id="resultAppealLockAlert" class="alert-box alert-danger hidden"></div>
 
           <div class="checklist-box">
             <h4 style="margin-top:0;">🔒 قائمة التحقق من مطابقة الملف الورقي مع المفتشية</h4>
-            <p style="font-size:0.85rem; color:var(--muted);">لا يُفتح زر الاعتماد إلا بعد التأشير على جميع الوثائق الإجبارية وإدخال مرجع تأشيرة المفتشية:</p>
-
-            <strong>1. الوثائق الإجبارية (مطلوبة جميعها):</strong>
-            <div class="grid grid-2" id="mandatoryChecks">
+            <strong>1. الوثائق الإجبارية:</strong>
+            <div class="grid grid-2">
               <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> الترخيص بعقد الاجتماع</label>
-              <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> التقرير المالي (مصادق عليه من محافظ الحسابات)</label>
+              <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> التقرير المالي (محافظ الحسابات)</label>
               <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> التقرير الأدبي</label>
               <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> وصل تسديد الاشتراكات</label>
               <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> الإعلان عن الجمعية العامة</label>
               <label class="chk-row"><input type="checkbox" class="req-chk" onchange="validateAccreditationLock()"> الاستدعاءات + محضر استلام الاستدعاءات</label>
             </div>
-
-            <strong style="display:block; margin-top:10px;">2. وثائق اختيارية (حسب نوع الجمعية):</strong>
+            <strong style="display:block; margin-top:10px;">2. وثائق اختيارية:</strong>
             <div class="grid grid-2">
               <label class="chk-row"><input type="checkbox" class="opt-chk" value="الميزانية التقديرية"> الميزانية التقديرية</label>
               <label class="chk-row"><input type="checkbox" class="opt-chk" value="البرنامج السنوي"> البرنامج السنوي</label>
             </div>
-
-            <strong style="display:block; margin-top:10px;">3. إضافة وثيقة أخرى إلى الملف:</strong>
+            <strong style="display:block; margin-top:10px;">3. إضافة وثيقة أخرى:</strong>
             <div style="display:flex; gap:8px; margin-top:6px;">
-              <input id="customDocInput" placeholder="اكتب اسم وثيقة إضافية (مثال: محضر جرد العتاد)...">
+              <input id="customDocInput" placeholder="اسم الوثيقة الإضافية...">
               <button class="btn-outline" onclick="addCustomDoc()">+ إضافة</button>
             </div>
             <ul id="customDocsList" style="margin:8px 0; font-size:0.88rem;"></ul>
 
             <div class="grid grid-2" style="margin-top:12px;">
-              <div>
-                <label>مرجع وتاريخ تأشيرة المفتشية (إجباري)</label>
-                <input id="inspectionVisaRef" placeholder="مثال: تأشيرة رقم 142/2026 بتاريخ 27/11/2026" oninput="validateAccreditationLock()">
-              </div>
-              <div>
-                <label>ملاحظات إدارية (اختياري)</label>
-                <input id="inspectionNotes" placeholder="أي تحفظ أو ملاحظة">
-              </div>
-              <div>
-                <label>إيميل الجمعية المعنية</label>
-                <input id="pvAssocEmail" type="email">
-              </div>
-              <div>
-                <label>إيميل المفتشية والجهات الوصية (مفصولة بفاصلة)</label>
-                <input id="pvOversightEmails" placeholder="inspection@..., daira@...">
-              </div>
+              <div><label>مرجع وتاريخ تأشيرة المفتشية (إجباري)</label><input id="inspectionVisaRef" oninput="validateAccreditationLock()"></div>
+              <div><label>ملاحظات إدارية</label><input id="inspectionNotes"></div>
+              <div><label>إيميل الجمعية المعنية</label><input id="pvAssocEmail" type="email"></div>
+              <div><label>إيميل المفتشية والجهات الوصية (مفصولة بفاصلة)</label><input id="pvOversightEmails"></div>
             </div>
 
             <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -294,69 +261,56 @@
               <button class="btn-outline" onclick="window.print()">🖨️ طباعة المحضر الرسمي</button>
             </div>
           </div>
-
           <div id="pvPreviewBox" class="pv-doc"></div>
         </div>
       </div>
     </div>
 
-    <!-- تبويب 4: مركز الإشعارات الآلية (Broadcast) -->
     <div id="tab-djs-notify" class="tab-panel hidden">
       <div class="card">
         <h3>📢 مركز الإشعارات الأوتوماتيكية للجمعيات (سحابة + إيميل)</h3>
         <div class="grid grid-2">
-          <div>
-            <label>المستهدفون</label>
-            <select id="notifyTarget">
-              <option value="ALL">جميع الجمعيات المسجلة بالولاية</option>
-            </select>
-          </div>
-          <div><label>عنوان الإشعار</label><input id="notifyTitle" placeholder="مثال: تذكير بضرورة عقد الجمعية العامة العادية"></div>
+          <div><label>المستهدفون</label><select id="notifyTarget"></select></div>
+          <div><label>عنوان الإشعار</label><input id="notifyTitle"></div>
         </div>
-        <div style="margin-top:10px;">
-          <label>نص الإشعار الرسمي</label>
-          <textarea id="notifyBody" rows="4" placeholder="اكتب نص التعليمة أو الإشعار هنا..."></textarea>
-        </div>
-        <button class="btn-primary" style="margin-top:12px;" onclick="sendBroadcastNotification()">📨 إرسال الإشعار (للتطبيق والبريد الإلكتروني)</button>
+        <div style="margin-top:10px;"><label>نص الإشعار الرسمي</label><textarea id="notifyBody" rows="4"></textarea></div>
+        <button class="btn-primary" style="margin-top:12px;" onclick="sendBroadcastNotification()">📨 إرسال الإشعار</button>
       </div>
-      <div class="card">
-        <h3>📜 سجل الإشعارات المرسلة</h3>
-        <div id="notificationsHistory"></div>
-      </div>
+      <div class="card"><h3>📜 سجل الإشعارات المرسلة</h3><div id="notificationsHistory"></div></div>
     </div>
 
     <!-- ==================== 2. مدير الشباب والرياضة (DJS-DIRECTOR) ==================== -->
     <div id="tab-dir-overview" class="tab-panel hidden">
       <div class="grid grid-4" id="dirKpis" style="margin-bottom:16px;"></div>
       <div class="card">
-        <h3>⚖️ دراسة الطعون والبت فيها (صلاحية حصرية لمدير الشباب والرياضة)</h3>
+        <h3>⚖️ دراسة الطعون والبت فيها (إضافة تلقائية عند القبول + إعلام صاحب الطعن بالإيميل)</h3>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>الجمعية</th><th>صاحب الطعن</th><th>موضوع الطعن</th><th>الحالة</th><th>قرار المدير</th></tr></thead>
+            <thead><tr><th>الجمعية</th><th>صاحب الطعن</th><th>التعليل والمرفق</th><th>الحالة</th><th>قرار المدير</th></tr></thead>
             <tbody id="appealsTableBody"></tbody>
           </table>
         </div>
       </div>
       <div class="card">
-        <h3>🛡️ السجل الرقمي الولائي للتدقيق (Audit Log)</h3>
+        <h3>🛡️ السجل الرقمي الولائي للتدقيق</h3>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>التاريخ والتوقيت</th><th>الفاعل</th><th>العملية</th><th>التفاصيل والتعليل</th></tr></thead>
+            <thead><tr><th>التوقيت</th><th>الفاعل</th><th>العملية</th><th>التفاصيل</th></tr></thead>
             <tbody id="wilayaAuditBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ==================== 3. الإدارة المركزية (MJS-ADMIN) والوزير (MJS-MINISTER) ==================== -->
+    <!-- ==================== 3. الإدارة المركزية (MJS-ADMIN) ==================== -->
     <div id="tab-mjs-dashboard" class="tab-panel hidden">
       <div id="conflictAlertBox" class="alert-box alert-danger hidden"></div>
       <div class="grid grid-4" id="mjsKpis" style="margin-bottom:16px;"></div>
       <div class="card">
-        <h3>🏛️ السجل الوطني للمحاضر المعتمدة (مرفوعة أوتوماتيكياً)</h3>
+        <h3>🏛️ تقارير ومحاضر الجمعيات العامة المعتمدة وطنياً</h3>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>الولاية</th><th>الجمعية</th><th>النوع</th><th>تاريخ الاعتماد</th><th>تأشيرة المفتشية</th><th>معاينة</th></tr></thead>
+            <thead><tr><th>الولاية</th><th>الجمعية</th><th>النوع</th><th>تاريخ الاعتماد</th><th>تأشيرة المفتشية</th><th>تقرير المحضر</th></tr></thead>
             <tbody id="nationalPvBody"></tbody>
           </table>
         </div>
@@ -365,36 +319,47 @@
 
     <div id="tab-mjs-djs" class="tab-panel hidden">
       <div class="card">
-        <h3>🏢 إنشاء حساب مديرية ولائية (الرمز لا يظهر ويُرسل مباشرة للإيميل المعتمد)</h3>
+        <h3>🏢 إنشاء حساب مديرية ولائية (الرموز تُرسل مباشرة للإيميل المعتمد)</h3>
         <div class="grid grid-4">
-          <div><label>رمز الولاية</label><input id="newDjsWilaya" placeholder="مثال: 04"></div>
+          <div><label>رمز الولاية</label><input id="newDjsWilaya" placeholder="04"></div>
           <div><label>اسم الولاية</label><input id="newDjsName" placeholder="أم البواقي"></div>
-          <div><label>إيميل المديرية الرسمي</label><input id="newDjsEmail" type="email" placeholder="djs04@mjs.gov.dz"></div>
-          <div style="display:flex; align-items:end;"><button class="btn-primary" style="width:100%;" onclick="createDirectorate()">إنشاء وإرسال الرموز للإيميل</button></div>
+          <div><label>الإيميل الرسمي</label><input id="newDjsEmail" type="email"></div>
+          <div style="display:flex; align-items:end;"><button class="btn-primary" style="width:100%;" onclick="createDirectorate()">إنشاء وإرسال الرموز</button></div>
         </div>
       </div>
       <div class="card">
-        <h3>📋 المديريات الولائية المسجلة</h3>
+        <h3>📋 المديريات المسجلة</h3>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>الولاية</th><th>حساب مكتب الجمعيات</th><th>حساب المدير</th><th>البريد المعتمد</th><th>إجراء</th></tr></thead>
+            <thead><tr><th>الولاية</th><th>حساب المكتب</th><th>حساب المدير</th><th>البريد المعتمد</th><th>الحالة</th></tr></thead>
             <tbody id="djsListBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <div id="tab-mjs-audit" class="tab-panel hidden">
+    <!-- ==================== 4. الوزير المكلف (MJS-MINISTER) ==================== -->
+    <div id="tab-minister-oversight" class="tab-panel hidden">
+      <div id="ministerConflictBox" class="alert-box alert-danger hidden"></div>
       <div class="card">
-        <h3>🔐 سجل التدقيق المركزي الشامل (حيازة حصرية للوزير المكلف)</h3>
+        <h3>⚖️ متابعة حالات الطعون عبر الوطن</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الولاية</th><th>الجمعية</th><th>صاحب الطعن</th><th>الموضوع</th><th>الحالة وقرار المدير</th></tr></thead>
+            <tbody id="ministerAppealsBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🚨 سجل الاختلالات والعمليات الحساسة (بدون تفاصيل تسجيل الدخول)</h3>
         <div class="grid grid-3" style="margin-bottom:10px;">
-          <input id="auditSearch" placeholder="بحث بالفاعل، العملية، أو التفاصيل..." oninput="renderCentralAudit()">
-          <input id="auditWilayaFilter" placeholder="تصفية برمز الولاية (مثال: 04)..." oninput="renderCentralAudit()">
-          <button class="btn-outline" onclick="window.print()">🖨️ طباعة تقرير التدقيق</button>
+          <input id="auditSearch" placeholder="بحث في الاختلالات أو العمليات..." oninput="renderMinisterAudit()">
+          <input id="auditWilayaFilter" placeholder="تصفية برمز الولاية..." oninput="renderMinisterAudit()">
+          <button class="btn-outline" onclick="window.print()">🖨️ طباعة التقرير الرقابي</button>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>التاريخ والتوقيت</th><th>الولاية</th><th>الفاعل</th><th>الدور</th><th>العملية</th><th>التفاصيل</th></tr></thead>
+            <thead><tr><th>التوقيت</th><th>الولاية</th><th>الفاعل</th><th>نوع العملية/الاختلال</th><th>التفاصيل والتعليل</th></tr></thead>
             <tbody id="centralAuditBody"></tbody>
           </table>
         </div>
@@ -404,34 +369,28 @@
   </div>
 </div>
 
-<!-- نافذة منبثقة لتفاصيل مؤشرات الأداء لكل ولاية -->
-<div id="kpiModal" class="modal-backdrop hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+<!-- نافذة منبثقة عامة (تفاصيل المؤشرات أو معاينة المحضر) -->
+<div id="genericModal" class="modal-backdrop hidden" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h3 id="kpiModalTitle" style="margin:0;">تفاصيل المؤشر حسب الولاية</h3>
-      <button class="btn-danger btn-sm" onclick="document.getElementById('kpiModal').classList.add('hidden')">إغلاق ✕</button>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <h3 id="genericModalTitle" style="margin:0;"></h3>
+      <button class="btn-danger btn-sm" onclick="document.getElementById('genericModal').classList.add('hidden')">إغلاق ✕</button>
     </div>
-    <div class="table-wrap" style="margin-top:12px;">
-      <table>
-        <thead><tr><th>الولاية</th><th>المجموع</th><th>القيمة</th><th>النسبة المئوية (%)</th></tr></thead>
-        <tbody id="kpiModalBody"></tbody>
-      </table>
-    </div>
+    <div id="genericModalBody"></div>
   </div>
 </div>
 
 <script>
-// ==================== الإعدادات السحابية وجسر الإيميل ====================
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/associatech-web/databases/(default)/documents/associatech_dz/portal_state";
 const EMAIL_BRIDGE_URL = "https://script.google.com/macros/s/AKfycbzS58QUlL4boVFNPj9B6np9FaaB9G6P7CCPW5_gX6xDlA-V2hJ18pmjdS1PV90Zo38/exec";
 const AES_SECRET_PASSPHRASE = "AssociaTech-DZ-2026-Gov-SecureKey!";
-const LOCAL_KEY = "associatech_dz_v2_state";
+const LOCAL_KEY = "associatech_dz_v3_state";
 
 let currentUser = null;
 let customDocs = [];
 let codeTimer = null;
 
-// ==================== تشفير AES-256-GCM (Web Crypto API) ====================
+// تشفير AES-256-GCM
 async function getCryptoKey() {
   const enc = new TextEncoder();
   const keyMat = await crypto.subtle.importKey("raw", enc.encode(AES_SECRET_PASSPHRASE), "PBKDF2", false, ["deriveKey"]);
@@ -449,17 +408,6 @@ async function encryptText(plain) {
   combined.set(iv, 0); combined.set(new Uint8Array(cipher), iv.length);
   return "AES:" + btoa(String.fromCharCode(...combined));
 }
-async function decryptText(encoded) {
-  if (!encoded) return "";
-  if (encoded.startsWith("B64:")) return decodeURIComponent(escape(atob(encoded.slice(4))));
-  if (!encoded.startsWith("AES:") || !window.crypto || !crypto.subtle) return encoded;
-  try {
-    const raw = Uint8Array.from(atob(encoded.slice(4)), c => c.charCodeAt(0));
-    const key = await getCryptoKey();
-    const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0,12) }, key, raw.slice(12));
-    return new TextDecoder().decode(plain);
-  } catch { return "[بيانات مشفرة]"; }
-}
 function maskNin(nin) {
   if (!nin) return "—";
   const s = String(nin);
@@ -472,7 +420,6 @@ function genSecureCode(prefix="DZ") {
   return `${prefix}-${r}`;
 }
 
-// ==================== الحالة الافتراضية (مع بيانات تجريبية جاهزة) ====================
 function getDefaultState() {
   return {
     accounts: [
@@ -485,7 +432,7 @@ function getDefaultState() {
       { wilaya: "04", name: "أم البواقي", bureauUser: "DJS-04-BUREAU", directorUser: "DJS-04-DIRECTOR", email: "billallouaar81@gmail.com" }
     ],
     associations: [
-      { id: "ASSOC-1", wilaya: "04", name: "النادي الرياضي الوداد سوق نعمان", accreditation: "04/2026/012", username: "WIDAD-SN-04", email: "billallouaar81@gmail.com", codeHash: "HIDDEN" }
+      { id: "ASSOC-1", wilaya: "04", name: "النادي الرياضي الوداد سوق نعمان", accreditation: "04/2026/012", username: "WIDAD-SN-04", email: "billallouaar81@gmail.com" }
     ],
     representatives: [
       { id: "REP-1", wilaya: "04", name: "كريم بن علي", nin: "100041985001234567", email: "billallouaar81@gmail.com", status: "PENDING" }
@@ -511,19 +458,21 @@ function getDefaultState() {
       }
     ],
     appeals: [
-      { id: "APP-1", wilaya: "04", assocName: "النادي الرياضي الوداد سوق نعمان", appellant: "سفيان حميدي", subject: "طعن في رفض ملف الترشح لرئاسة النادي", status: "PENDING", decisionNote: "" }
+      {
+        id: "APP-1", wilaya: "04", dossierId: "DOS-101", assocId: "ASSOC-1", assocName: "النادي الرياضي الوداد سوق نعمان",
+        appellant: "سفيان حميدي", nin: "100041987000000009", email: "billallouaar81@gmail.com", phone: "0661999999",
+        subject: "طعن معلل في رفض ملف الترشح لرئاسة النادي", attachmentName: "dossier_recours.pdf",
+        status: "PENDING", decisionNote: ""
+      }
     ],
     notifications: [],
-    auditLogs: [
-      { timestamp: new Date().toLocaleString("fr-DZ"), wilaya: "00", actor: "SYSTEM", role: "SYSTEM", action: "INIT", details: "تهيئة المنصة بنظام التشفير وسجل التدقيق" }
-    ]
+    auditLogs: []
   };
 }
 
 let state = getDefaultState();
 
-// ==================== المزامنة السحابية (Firestore REST API) ====================
-async function loadCloudState() {
+async function loadCloudState(manual=false) {
   const badge = document.getElementById("cloudStatus");
   try {
     const res = await fetch(FIRESTORE_URL);
@@ -531,11 +480,12 @@ async function loadCloudState() {
       const doc = await res.json();
       if (doc.fields && doc.fields.payload && doc.fields.payload.stringValue) {
         const parsed = JSON.parse(doc.fields.payload.stringValue);
-        if (parsed.accounts && parsed.auditLogs) state = parsed;
+        if (parsed.accounts) state = parsed;
       }
       badge.className = "badge badge-ok";
-      badge.textContent = "🟢 متصل بسحابة Firestore";
+      badge.textContent = manual ? "🟢 تم التحديث الآلي الآن" : "🟢 مزامنة سحابية آلية";
       localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
+      if (currentUser) renderAll();
       return;
     }
   } catch (e) {}
@@ -559,24 +509,13 @@ async function saveCloudState() {
         }
       })
     });
-    if (res.ok) {
-      badge.className = "badge badge-ok";
-      badge.textContent = "🟢 تمت المزامنة السحابية";
-    }
-  } catch (e) {
-    badge.className = "badge badge-warn";
-    badge.textContent = "🟠 محفوظ محلياً (بانتظار الشبكة)";
-  }
+    if (res.ok) { badge.className = "badge badge-ok"; badge.textContent = "🟢 تمت المزامنة السحابية"; }
+  } catch (e) { badge.className = "badge badge-warn"; badge.textContent = "🟠 محفوظ محلياً"; }
 }
 
 async function sendEmailBridge(payload) {
   try {
-    await fetch(EMAIL_BRIDGE_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(payload)
-    });
+    await fetch(EMAIL_BRIDGE_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
     return true;
   } catch { return false; }
 }
@@ -591,26 +530,25 @@ function logAudit(action, details, wilayaOverride) {
   });
 }
 
-// ==================== تسجيل الدخول والتنقل ====================
+function hasPendingAppealsFor(assocId, assocName) {
+  return state.appeals.some(a => a.status === "PENDING" && (a.assocId === assocId || a.assocName === assocName));
+}
+
+// الدخول والتنقل
 async function handleLogin() {
   const u = document.getElementById("loginUser").value.trim();
   const c = document.getElementById("loginCode").value.trim();
   const acc = state.accounts.find(a => a.username.toLowerCase() === u.toLowerCase() && a.code === c);
-  if (!acc) {
-    document.getElementById("loginMsg").textContent = "❌ اسم المستخدم أو رمز الدخول غير صحيح.";
-    return;
-  }
+  if (!acc) return document.getElementById("loginMsg").textContent = "❌ بيانات الدخول غير صحيحة.";
   currentUser = acc;
-  logAudit("LOGIN", `تسجيل دخول ناجح بحساب ${acc.name}`);
+  logAudit("LOGIN", `دخول ${acc.name}`);
   await saveCloudState();
 
   document.getElementById("loginSection").classList.add("hidden");
   document.getElementById("appSection").classList.remove("hidden");
   document.getElementById("logoutBtn").classList.remove("hidden");
   const ub = document.getElementById("userBadge");
-  ub.classList.remove("hidden");
-  ub.textContent = `👤 ${acc.name} (${acc.role})`;
-
+  ub.classList.remove("hidden"); ub.textContent = `👤 ${acc.name}`;
   buildTabsForRole(acc.role);
 }
 
@@ -631,23 +569,23 @@ function buildTabsForRole(role) {
     tabs = [
       { id: "tab-djs-assoc", label: "1. الجمعيات والأكواد" },
       { id: "tab-djs-prep", label: "2. الممثلون والملفات" },
-      { id: "tab-djs-verify", label: "3. تدقيق النتائج والاعتماد" },
-      { id: "tab-djs-notify", label: "4. مركز الإشعارات" }
+      { id: "tab-djs-appeals", label: "3. الترشحات والطعون" },
+      { id: "tab-djs-verify", label: "4. تدقيق النتائج والاعتماد" },
+      { id: "tab-djs-notify", label: "5. مركز الإشعارات" }
     ];
   } else if (role === "DJS-DIRECTOR") {
-    tabs = [{ id: "tab-dir-overview", label: "📊 لوحة المدير والطعون والسجل الولائي" }];
+    tabs = [{ id: "tab-dir-overview", label: "⚖️ لوحة المدير والطعون والسجل الولائي" }];
   } else if (role === "MJS-ADMIN") {
     tabs = [
-      { id: "tab-mjs-dashboard", label: "📊 لوحة القيادة الوطنية وكشف العهدات" },
+      { id: "tab-mjs-dashboard", label: "📊 لوحة القيادة وتقارير المحاضر" },
       { id: "tab-mjs-djs", label: "🏢 إدارة المديريات الولائية" }
     ];
   } else if (role === "MJS-MINISTER") {
     tabs = [
-      { id: "tab-mjs-audit", label: "🔐 سجل التدقيق المركزي الشامل (الوزير)" },
-      { id: "tab-mjs-dashboard", label: "📊 لوحة القيادة الوطنية" }
+      { id: "tab-minister-oversight", label: "🚨 الطعون والاختلالات (الوزير)" },
+      { id: "tab-mjs-dashboard", label: "📄 تقارير محاضر الجمعيات ومؤشرات الأداء" }
     ];
   }
-
   tabs.forEach((t, idx) => {
     const btn = document.createElement("button");
     btn.className = "tab-btn" + (idx === 0 ? " active" : "");
@@ -666,243 +604,272 @@ function switchTab(tabId, btnEl) {
   renderAll();
 }
 
-// ==================== وظائف مكتب الجمعيات (DJS-BUREAU) ====================
+// مكتب الجمعيات: الجمعيات
 async function createAssociation() {
   const name = document.getElementById("newAssocName").value.trim();
   const acc = document.getElementById("newAssocAcc").value.trim();
   const user = document.getElementById("newAssocUser").value.trim();
   const email = document.getElementById("newAssocEmail").value.trim();
-  if (!name || !user || !email) return alert("يرجى ملء الاسم، المستخدم، والبريد الإلكتروني.");
-
+  if (!name || !user || !email) return alert("يرجى ملء الحقول الإجبارية.");
   const rawCode = genSecureCode("CLB");
-  const encryptedCode = await encryptText(rawCode);
   state.associations.push({
     id: "ASSOC-" + Date.now(), wilaya: currentUser.wilaya,
-    name, accreditation: acc, username: user, email, codeEncrypted: encryptedCode
+    name, accreditation: acc, username: user, email, codeEncrypted: await encryptText(rawCode)
   });
   logAudit("CREATE_ASSOC", `إنشاء حساب للجمعية (${name}) وإرسال الرمز إلى ${email}`);
   await saveCloudState();
-
   await sendEmailBridge({
     type: "ACCESS_CODE", to: email,
-    subject: `AssociaTech-DZ | بيانات الدخول لتطبيق الجمعية (${name})`,
-    body: `السلام عليكم،\nتم تفعيل حساب جمعيتكم (${name}) في منظومة AssociaTech-DZ.\nاسم المستخدم: ${user}\nرمز الدخول السري: ${rawCode}\nيرجى الحفاظ على سرية هذا الرمز.`
+    subject: `AssociaTech-DZ | بيانات الدخول (${name})`,
+    body: `المستخدم: ${user}\nرمز الدخول السري: ${rawCode}`
   });
-
   showEphemeralCode(name, user, rawCode, email);
   renderAll();
 }
 
 async function renewAssocCode(assocId) {
   const a = state.associations.find(x => x.id === assocId);
-  if (!a || !confirm(`تجديد رمز الدخول للجمعية (${a.name}) وإبطال الرمز القديم؟`)) return;
+  if (!a || !confirm(`تجديد الرمز للجمعية (${a.name})؟`)) return;
   const rawCode = genSecureCode("CLB");
   a.codeEncrypted = await encryptText(rawCode);
-  logAudit("RENEW_ASSOC_CODE", `تجديد رمز الدخول للجمعية (${a.name}) وإرساله إلى ${a.email}`);
+  logAudit("RENEW_ASSOC_CODE", `تجديد رمز الدخول للجمعية (${a.name})`);
   await saveCloudState();
-
   await sendEmailBridge({
     type: "ACCESS_CODE", to: a.email,
     subject: `AssociaTech-DZ | تجديد رمز الدخول (${a.name})`,
-    body: `تم إلغاء الرمز السابق وتوليد رمز دخول جديد لجمعيتكم.\nالمستخدم: ${a.username}\nالرمز الجديد: ${rawCode}`
+    body: `المستخدم: ${a.username}\nالرمز الجديد: ${rawCode}`
   });
-
   showEphemeralCode(a.name, a.username, rawCode, a.email);
 }
 
 function showEphemeralCode(name, user, code, email) {
   clearInterval(codeTimer);
   const box = document.getElementById("ephemeralCodeBox");
-  let sec = 60;
-  box.classList.remove("hidden");
-  const update = () => {
-    box.innerHTML = `🔑 رمز الدخول المؤقت للجمعية <u>${name}</u> (المستخدم: ${user}): <span style="font-size:1.3rem; color:#b91c1c;">${code}</span><br>
-    <small>📧 تم إرساله تلقائياً إلى (${email}) — سيختفي من الشاشة نهائياً خلال <b>${sec} ثانية</b></small>`;
+  let sec = 60; box.classList.remove("hidden");
+  const upd = () => {
+    box.innerHTML = `🔑 رمز الدخول المؤقت لـ <u>${name}</u> (${user}): <span style="font-size:1.3rem; color:#b91c1c;">${code}</span><br><small>📧 أُرسل إلى (${email}) — يختفي خلال <b>${sec} ثانية</b></small>`;
   };
-  update();
-  codeTimer = setInterval(() => {
-    sec--;
-    if (sec <= 0) {
-      clearInterval(codeTimer);
-      box.classList.add("hidden");
-      box.innerHTML = "";
-    } else update();
-  }, 1000);
+  upd();
+  codeTimer = setInterval(() => { if (--sec <= 0) { clearInterval(codeTimer); box.classList.add("hidden"); } else upd(); }, 1000);
 }
 
-// الممثلون
+// الممثلون والملفات
 function importRepRequest(e) {
-  const file = e.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = async () => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = async () => {
     try {
-      const r = JSON.parse(reader.result);
-      state.representatives.push({
-        id: "REP-" + Date.now(), wilaya: currentUser.wilaya,
-        name: r.name || "ممثل جديد", nin: r.nin || "000000000000000000",
-        email: r.email || "", status: "PENDING"
-      });
-      logAudit("IMPORT_REP", `استيراد طلب تسجيل أولي للممثل (${r.name})`);
+      const d = JSON.parse(r.result);
+      state.representatives.push({ id: "REP-" + Date.now(), wilaya: currentUser.wilaya, name: d.name, nin: d.nin, email: d.email || "", status: "PENDING" });
+      logAudit("IMPORT_REP", `تسجيل أولي للممثل (${d.name})`);
       await saveCloudState(); renderAll();
-    } catch { alert("ملف JSON غير صالح."); }
+    } catch { alert("ملف غير صالح."); }
   };
-  reader.readAsText(file);
+  r.readAsText(f);
 }
 
-async function setRepStatus(repId, status) {
-  const r = state.representatives.find(x => x.id === repId);
-  if (!r) return;
+async function setRepStatus(id, status) {
+  const r = state.representatives.find(x => x.id === id); if (!r) return;
   r.status = status;
-  logAudit("REP_APPROVAL", `${status === "APPROVED" ? "المصادقة على" : "رفض"} الممثل (${r.name})`);
+  logAudit("REP_APPROVAL", `${status === "APPROVED" ? "اعتماد" : "رفض"} الممثل (${r.name})`);
   await saveCloudState(); renderAll();
 }
 
-// الملفات والأعضاء
 function importDossierJson(e) {
-  const file = e.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = async () => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = async () => {
     try {
-      const d = JSON.parse(reader.result);
-      d.id = d.id || ("DOS-" + Date.now());
-      d.wilaya = currentUser.wilaya;
+      const d = JSON.parse(r.result);
+      d.id = d.id || ("DOS-" + Date.now()); d.wilaya = currentUser.wilaya;
       state.dossiers.push(d);
       logAudit("IMPORT_DOSSIER", `استلام ملف الجمعية (${d.assocName})`);
       await saveCloudState(); renderAll();
-    } catch { alert("ملف JSON غير صالح."); }
+    } catch { alert("ملف غير صالح."); }
   };
-  reader.readAsText(file);
+  r.readAsText(f);
 }
 
 async function addMemberWithReason() {
-  const dId = document.getElementById("dossierSelect").value;
-  const d = state.dossiers.find(x => x.id === dId);
+  const d = state.dossiers.find(x => x.id === document.getElementById("dossierSelect").value);
   const name = document.getElementById("addMemName").value.trim();
   const nin = document.getElementById("addMemNin").value.trim();
   const email = document.getElementById("addMemEmail").value.trim();
   const phone = document.getElementById("addMemPhone").value.trim();
   const paid = document.getElementById("addMemPaid").value === "true";
   const reason = document.getElementById("addMemReason").value.trim();
-  if (!d || !name || !nin || !reason) return alert("الاسم، رقم NIN، والتعليل القانوني حقول إجبارية.");
-
+  if (!d || !name || !nin || !reason) return alert("الاسم، NIN، والتعليل إجبارية.");
   d.members.push({ name, nin, email, phone, paid });
   logAudit("MEMBER_ADD", `إضافة العضو (${name}) لملف (${d.assocName}) — التعليل: ${reason}`);
-  await saveCloudState();
-  document.getElementById("addMemName").value = "";
-  document.getElementById("addMemNin").value = "";
-  document.getElementById("addMemReason").value = "";
-  renderSelectedDossier();
+  await saveCloudState(); renderSelectedDossier();
 }
 
 async function strikeMember(dId, idx) {
   const d = state.dossiers.find(x => x.id === dId);
   const m = d.members[idx];
-  const reason = prompt(`أدخل التعليل القانوني الإجباري لشطب العضو (${m.name}):`);
-  if (!reason || !reason.trim()) return alert("لا يمكن الشطب بدون تعليل قانوني.");
+  const reason = prompt(`التعليل القانوني لشطب العضو (${m.name}):`);
+  if (!reason || !reason.trim()) return;
   d.members.splice(idx, 1);
-  logAudit("MEMBER_STRIKE", `شطب العضو (${m.name}) من ملف (${d.assocName}) — التعليل: ${reason.trim()}`);
+  logAudit("MEMBER_STRIKE", `شطب العضو (${m.name}) من (${d.assocName}) — التعليل: ${reason.trim()}`);
+  await saveCloudState(); renderSelectedDossier();
+}
+
+// تسجيل الطعن في مكتب الجمعيات وإحالته للمدير
+async function registerAppealForDirector() {
+  const dId = document.getElementById("appealDossierSelect").value;
+  const d = state.dossiers.find(x => x.id === dId);
+  const name = document.getElementById("appealName").value.trim();
+  const nin = document.getElementById("appealNin").value.trim();
+  const email = document.getElementById("appealEmail").value.trim();
+  const phone = document.getElementById("appealPhone").value.trim();
+  const subject = document.getElementById("appealSubject").value.trim();
+  const fileInput = document.getElementById("appealFile");
+  const attachmentName = fileInput.files[0] ? fileInput.files[0].name : "تعليل كتابي بدون مرفق";
+
+  if (!d || !name || !nin || !email || !subject) return alert("يرجى ملء جميع الحقول الإجبارية (بما فيها البريد الإلكتروني والتعليل).");
+
+  state.appeals.unshift({
+    id: "APP-" + Date.now(), wilaya: currentUser.wilaya,
+    dossierId: d.id, assocId: d.assocId, assocName: d.assocName,
+    appellant: name, nin, email, phone, subject, attachmentName,
+    status: "PENDING", decisionNote: ""
+  });
+  logAudit("APPEAL_REGISTERED", `تسجيل طعن لـ (${name}) في جمعية (${d.assocName}) وإحالته لمدير الشباب والرياضة`);
   await saveCloudState();
-  renderSelectedDossier();
+
+  document.getElementById("appealName").value = "";
+  document.getElementById("appealNin").value = "";
+  document.getElementById("appealSubject").value = "";
+  alert("✅ تم تسجيل الطعن وإحالته فوراً إلى فضاء مدير الشباب والرياضة للبت فيه.");
+  renderAll();
+}
+
+// بت مدير الشباب والرياضة في الطعن (إضافة تلقائية عند القبول + إعلام صاحب الطعن بالإيميل)
+async function decideAppeal(appId, status) {
+  const a = state.appeals.find(x => x.id === appId); if (!a) return;
+  const note = prompt(`أدخل التعليل الرسمي لقرار (${status === "ACCEPTED" ? "قبول" : "رفض"}) الطعن:`);
+  if (!note || !note.trim()) return alert("التعليل إجباري.");
+
+  a.status = status;
+  a.decisionNote = note.trim();
+
+  // إذا قُبل الطعن، يُضاف العضو/المترشح تلقائياً إلى قائمة الجمعية الانتخابية
+  if (status === "ACCEPTED") {
+    const d = state.dossiers.find(x => x.id === a.dossierId || x.assocName === a.assocName);
+    if (d && !d.members.some(m => m.nin === a.nin)) {
+      d.members.push({ name: a.appellant, nin: a.nin, email: a.email, phone: a.phone || "", paid: true });
+    }
+  }
+
+  logAudit("APPEAL_DECISION", `بت مدير الشباب والرياضة في طعن (${a.appellant} - ${a.assocName}): ${status === "ACCEPTED" ? "مقبول وأُضيف للقائمة" : "مرفوض"} — ${a.decisionNote}`);
+  await saveCloudState();
+
+  if (a.email) {
+    await sendEmailBridge({
+      type: "APPEAL_DECISION", to: a.email,
+      subject: `مديرية الشباب والرياضة | قرار البت في الطعن (${a.assocName})`,
+      body: `السيد(ة) ${a.appellant}،\nنعلمكم أن مدير الشباب والرياضة قد بتّ في طعنكم المتعلق بـ (${a.assocName}) بالقرار التالي:\nالقرار: ${status === "ACCEPTED" ? "قبول الطعن وإدراجكم تلقائياً في القائمة" : "رفض الطعن"}\nالتعليل: ${a.decisionNote}`
+    });
+  }
+  alert(`✅ تم تسجيل القرار وإعلام صاحب الطعن (${a.appellant}) عبر البريد الإلكتروني.`);
+  renderAll();
 }
 
 async function dispatchSessionToRep(toCloud) {
   const d = state.dossiers.find(x => x.id === document.getElementById("dossierSelect").value);
+  if (d.type === "AGE" && hasPendingAppealsFor(d.assocId, d.assocName)) {
+    return alert("⛔ لا يمكن إرسال حزمة الجمعية الانتخابية قبل البت في جميع الطعون العالقة.");
+  }
   const rep = state.representatives.find(x => x.id === document.getElementById("approvedRepSelect").value);
   const sDate = document.getElementById("sessionDate").value;
   const sPlace = document.getElementById("sessionPlace").value.trim();
-  if (!d || !rep || !sDate || !sPlace) return alert("يرجى اختيار الممثل المعتمد وتحديد التاريخ والمكان.");
+  if (!d || !rep || !sDate || !sPlace) return alert("يرجى اختيار الممثل وتحديد التاريخ والمكان.");
 
   const pkg = {
     sessionId: "SES-" + Date.now(), wilaya: currentUser.wilaya,
     assocName: d.assocName, type: d.type, date: sDate, place: sPlace,
-    repName: rep.name, repNinEncrypted: await encryptText(rep.nin),
-    members: d.members
+    repName: rep.name, repNinEncrypted: await encryptText(rep.nin), members: d.members
   };
-
   if (toCloud) {
     state.sessions.push(pkg);
-    logAudit("DISPATCH_SESSION", `إرسال تفويض وجلسة (${d.assocName}) سحابياً إلى الممثل (${rep.name})`);
+    logAudit("DISPATCH_SESSION", `إرسال تفويض وجلسة (${d.assocName}) آلياً للممثل (${rep.name})`);
     await saveCloudState();
-    alert("✅ تم إرسال التفويض وحزمة الجلسة تلقائياً إلى تطبيق الممثل عبر السحابة.");
+    alert("✅ تم إرسال التفويض وحزمة الجلسة آلياً لتطبيق الممثل.");
   } else {
-    const encryptedPkg = await encryptText(JSON.stringify(pkg));
-    const blob = new Blob([JSON.stringify({ encrypted: true, data: encryptedPkg })], { type: "application/json" });
+    const enc = await encryptText(JSON.stringify(pkg));
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `session_${pkg.sessionId}.json`;
-    a.click();
-    logAudit("EXPORT_SESSION", `تصدير حزمة جلسة مشفّرة (${d.assocName}) للممثل (${rep.name})`);
-    await saveCloudState();
+    a.href = URL.createObjectURL(new Blob([JSON.stringify({ encrypted: true, data: enc })], { type: "application/json" }));
+    a.download = `session_${pkg.sessionId}.json`; a.click();
   }
 }
 
 async function sendElectronicInvitations() {
   const d = state.dossiers.find(x => x.id === document.getElementById("dossierSelect").value);
+  if (!d) return;
   const sDate = document.getElementById("sessionDate").value || "يُحدد لاحقاً";
   const sPlace = document.getElementById("sessionPlace").value.trim() || "مقر الجمعية";
-  if (!d) return;
-
   const paidEmails = d.members.filter(m => m.paid && m.email).map(m => m.email);
   const unpaidEmails = d.members.filter(m => !m.paid && m.email).map(m => m.email);
 
-  if (paidEmails.length > 0) {
+  if (paidEmails.length) {
     await sendEmailBridge({
       type: "INVITATION", to: currentUser.email, bcc: paidEmails.join(","),
-      subject: `استدعاء رسمي لحضور الجمعية العامة (${d.type}) - ${d.assocName}`,
-      body: `تحية طيبة،\nتتشرف ${d.assocName} بدعوتكم بصفتكم عضواً مسدداً لحضور الجمعية العامة (${d.type}) المقررة بتاريخ ${sDate} بالمكان: ${sPlace}.`
+      subject: `استدعاء رسمي للجمعية العامة (${d.type}) - ${d.assocName}`,
+      body: `ندعوكم لحضور الجمعية العامة لـ ${d.assocName} بتاريخ ${sDate} في ${sPlace}.`
     });
   }
-  if (unpaidEmails.length > 0) {
+  if (unpaidEmails.length) {
     await sendEmailBridge({
       type: "INVITATION", to: currentUser.email, bcc: unpaidEmails.join(","),
-      subject: `إشعار بموعد الجمعية العامة وتذكير بتسوية الاشتراك - ${d.assocName}`,
-      body: `تحية طيبة،\nنعلمكم بانعقاد الجمعية العامة (${d.type}) لجمعية ${d.assocName} بتاريخ ${sDate} في ${sPlace}.\nيرجى تسوية حقوق اشتراككم وتقديم ما يثبت ذلك قبل موعد الانعقاد للتمكن من الحضور والتصويت وفقاً للقانون.`
+      subject: `إشعار وتذكير بتسوية الاشتراك - ${d.assocName}`,
+      body: `نعلمكم بانعقاد الجمعية العامة بتاريخ ${sDate} في ${sPlace}. يرجى تسوية اشتراككم وإثبات ذلك قبل الموعد للتمكن من الحضور والتصويت.`
     });
   }
-  logAudit("SEND_INVITATIONS", `إرسال استدعاءات إلكترونية لملف (${d.assocName}): ${paidEmails.length} مسدد، ${unpaidEmails.length} تذكير غير مسدد`);
+  logAudit("SEND_INVITATIONS", `إرسال استدعاءات لـ (${d.assocName}): ${paidEmails.length} مسدد، ${unpaidEmails.length} غير مسدد`);
   await saveCloudState();
-  alert(`✅ تم إرسال الاستدعاءات بنجاح (${paidEmails.length} للمسددين، و ${unpaidEmails.length} تذكير لغير المسددين).`);
+  alert(`✅ تم إرسال الاستدعاءات (${paidEmails.length} مسدد، ${unpaidEmails.length} تذكير غير مسدد).`);
 }
 
 // تدقيق النتائج والاعتماد
 function importResultJson(e) {
-  const file = e.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = async () => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = async () => {
     try {
-      const r = JSON.parse(reader.result);
-      r.id = r.id || ("RES-" + Date.now());
-      r.wilaya = currentUser.wilaya;
-      r.accredited = false;
-      state.results.push(r);
-      logAudit("IMPORT_RESULT", `استلام نتيجة جلسة (${r.assocName})`);
+      const d = JSON.parse(r.result);
+      d.id = d.id || ("RES-" + Date.now()); d.wilaya = currentUser.wilaya; d.accredited = false;
+      state.results.push(d);
+      logAudit("IMPORT_RESULT", `استلام نتيجة جلسة (${d.assocName})`);
       await saveCloudState(); renderAll();
     } catch { alert("ملف غير صالح."); }
   };
-  reader.readAsText(file);
+  r.readAsText(f);
 }
 
 function addCustomDoc() {
   const inp = document.getElementById("customDocInput");
   if (!inp.value.trim()) return;
-  customDocs.push(inp.value.trim());
-  inp.value = "";
+  customDocs.push(inp.value.trim()); inp.value = "";
   document.getElementById("customDocsList").innerHTML = customDocs.map((d, i) =>
     `<li>📄 ${d} <button class="btn-danger btn-sm" onclick="customDocs.splice(${i},1); this.parentElement.remove();">حذف</button></li>`
   ).join("");
 }
 
 function validateAccreditationLock() {
+  const r = state.results.find(x => x.id === document.getElementById("resultSelect").value);
+  const blockedByAppeal = r && r.type === "AGE" && hasPendingAppealsFor(r.assocId, r.assocName);
   const allChecked = Array.from(document.querySelectorAll(".req-chk")).every(c => c.checked);
   const visa = document.getElementById("inspectionVisaRef").value.trim().length >= 3;
-  document.getElementById("accreditBtn").disabled = !(allChecked && visa);
+  document.getElementById("accreditBtn").disabled = !(allChecked && visa && !blockedByAppeal);
 }
 
 async function accreditAndDistributePV() {
   const r = state.results.find(x => x.id === document.getElementById("resultSelect").value);
   if (!r) return;
+  if (r.type === "AGE" && hasPendingAppealsFor(r.assocId, r.assocName)) {
+    return alert("⛔ لا يمكن اعتماد الجمعية الانتخابية قبل البت في الطعون.");
+  }
   const visa = document.getElementById("inspectionVisaRef").value.trim();
-  const notes = document.getElementById("inspectionNotes").value.trim();
   const assocEmail = document.getElementById("pvAssocEmail").value.trim();
   const oversightEmails = document.getElementById("pvOversightEmails").value.trim();
   const optChecked = Array.from(document.querySelectorAll(".opt-chk:checked")).map(c => c.value);
@@ -910,241 +877,191 @@ async function accreditAndDistributePV() {
   r.accredited = true;
   r.accreditedAt = new Date().toLocaleString("fr-DZ");
   r.inspectionVisa = visa;
-  r.inspectionNotes = notes;
-  r.verifiedDocs = [
-    "الترخيص بعقد الاجتماع", "التقرير المالي (محافظ الحسابات)", "التقرير الأدبي",
-    "وصل تسديد الاشتراكات", "الإعلان", "الاستدعاءات ومحضر استلامها",
-    ...optChecked, ...customDocs
-  ];
+  r.verifiedDocs = ["الترخيص", "التقرير المالي", "التقرير الأدبي", "وصل الاشتراكات", "الإعلان", "الاستدعاءات ومحضر استلامها", ...optChecked, ...customDocs];
 
-  logAudit("ACCREDIT_PV", `اعتماد المحضر (${r.assocName}) بتأشيرة المفتشية (${visa}) ورفعه تلقائياً للوزارة`);
+  logAudit("ACCREDIT_PV", `اعتماد المحضر (${r.assocName}) بتأشيرة المفتشية (${visa}) ورفعه للوزارة`);
   await saveCloudState();
 
-  const allRecipients = [assocEmail, ...oversightEmails.split(",")].map(s => s.trim()).filter(Boolean);
-  if (allRecipients.length > 0) {
+  const recips = [assocEmail, ...oversightEmails.split(",")].map(s => s.trim()).filter(Boolean);
+  if (recips.length) {
     await sendEmailBridge({
-      type: "ACCREDITED_PV",
-      to: allRecipients[0],
-      bcc: allRecipients.slice(1).join(","),
+      type: "ACCREDITED_PV", to: recips[0], bcc: recips.slice(1).join(","),
       subject: `AssociaTech-DZ | المحضر الرسمي المعتمد - ${r.assocName}`,
-      body: `الجمهورية الجزائرية الديمقراطية الشعبية\nمديرية الشباب والرياضة (ولاية ${r.wilaya})\n\nتم اعتماد محضر الجمعية العامة (${r.type}) لجمعية: ${r.assocName}\nتاريخ الانعقاد: ${r.date}\nالرئيس المنتخب: ${r.electedPresident ? r.electedPresident.name : "—"}\nتأشيرة المفتشية: ${visa}\nالوثائق المعاينة: ${r.verifiedDocs.join("، ")}\nتاريخ الاعتماد الرقمي: ${r.accreditedAt}`
+      body: `تم اعتماد محضر الجمعية العامة (${r.type}) لـ ${r.assocName}\nالرئيس المنتخب: ${r.electedPresident?.name || "—"}\nتأشيرة المفتشية: ${visa}\nتاريخ الاعتماد: ${r.accreditedAt}`
     });
   }
-
-  alert("✅ تم اعتماد المحضر بنجاح، ورُفع أوتوماتيكياً للسجل الوطني بالوزارة، وأُرسل للجمعية والمفتشية والجهات الوصية.");
+  alert("✅ تم اعتماد المحضر، ورُفع أوتوماتيكياً للوزارة، وأُرسل للجمعية والمفتشية والجهات الوصية.");
   renderSelectedResult();
 }
 
-// مركز الإشعارات
 async function sendBroadcastNotification() {
   const target = document.getElementById("notifyTarget").value;
   const title = document.getElementById("notifyTitle").value.trim();
   const body = document.getElementById("notifyBody").value.trim();
-  if (!title || !body) return alert("يرجى كتابة العنوان ونص الإشعار.");
-
+  if (!title || !body) return alert("يرجى كتابة العنوان والنص.");
   const assocs = state.associations.filter(a => a.wilaya === currentUser.wilaya && (target === "ALL" || a.id === target));
   const emails = assocs.map(a => a.email).filter(Boolean);
-
-  state.notifications.unshift({
-    id: "NOT-" + Date.now(), wilaya: currentUser.wilaya, target,
-    title, body, sentAt: new Date().toLocaleString("fr-DZ"), count: assocs.length
-  });
+  state.notifications.unshift({ id: "NOT-" + Date.now(), wilaya: currentUser.wilaya, title, body, sentAt: new Date().toLocaleString("fr-DZ"), count: assocs.length });
   logAudit("BROADCAST_NOTIFY", `إرسال إشعار (${title}) إلى ${assocs.length} جمعية`);
   await saveCloudState();
-
-  if (emails.length > 0) {
-    await sendEmailBridge({
-      type: "BROADCAST", to: currentUser.email, bcc: emails.join(","),
-      subject: `إشعار رسمي من مديرية الشباب والرياضة | ${title}`,
-      body: body
-    });
-  }
-  document.getElementById("notifyTitle").value = "";
-  document.getElementById("notifyBody").value = "";
-  alert(`✅ تم إرسال الإشعار سحابياً وعبر البريد الإلكتروني إلى ${assocs.length} جمعية.`);
+  if (emails.length) await sendEmailBridge({ type: "BROADCAST", to: currentUser.email, bcc: emails.join(","), subject: `إشعار DJS | ${title}`, body });
+  alert(`✅ تم إرسال الإشعار إلى ${assocs.length} جمعية.`);
   renderAll();
 }
 
-// ==================== مدير الشباب والرياضة (الطعون) ====================
-async function decideAppeal(appId, status) {
-  const a = state.appeals.find(x => x.id === appId);
-  if (!a) return;
-  const note = prompt("أدخل تعليل قرار المدير (إجباري):");
-  if (!note || !note.trim()) return;
-  a.status = status;
-  a.decisionNote = note.trim();
-  logAudit("APPEAL_DECISION", `بت مدير الشباب والرياضة في طعن (${a.appellant}): ${status} — ${a.decisionNote}`);
-  await saveCloudState(); renderAll();
-}
-
-// ==================== الوزارة (إدارة المديريات ومؤشرات الأداء) ====================
 async function createDirectorate() {
   const w = document.getElementById("newDjsWilaya").value.trim();
   const name = document.getElementById("newDjsName").value.trim();
   const email = document.getElementById("newDjsEmail").value.trim();
   if (!w || !name || !email) return alert("يرجى ملء جميع الحقول.");
-
-  const bureauUser = `DJS-${w}-BUREAU`;
-  const dirUser = `DJS-${w}-DIRECTOR`;
-  const bureauCode = genSecureCode(`DJS${w}`);
-  const dirCode = genSecureCode(`DIR${w}`);
-
-  state.directorates.push({ wilaya: w, name, bureauUser, directorUser: dirUser, email });
+  const bUser = `DJS-${w}-BUREAU`, dUser = `DJS-${w}-DIRECTOR`;
+  const bCode = genSecureCode(`DJS${w}`), dCode = genSecureCode(`DIR${w}`);
+  state.directorates.push({ wilaya: w, name, bureauUser: bUser, directorUser: dUser, email });
   state.accounts.push(
-    { username: bureauUser, code: bureauCode, role: "DJS-BUREAU", wilaya: w, name: `مكتب الجمعيات - ${name}`, email },
-    { username: dirUser, code: dirCode, role: "DJS-DIRECTOR", wilaya: w, name: `مدير الشباب والرياضة - ${name}`, email }
+    { username: bUser, code: bCode, role: "DJS-BUREAU", wilaya: w, name: `مكتب الجمعيات - ${name}`, email },
+    { username: dUser, code: dCode, role: "DJS-DIRECTOR", wilaya: w, name: `مدير الشباب والرياضة - ${name}`, email }
   );
-
-  logAudit("CREATE_DJS", `إنشاء حسابات مديرية ولاية ${name} (${w}) وإرسال الرموز مباشرة إلى ${email}`, w);
+  logAudit("CREATE_DJS", `إنشاء مديرية ولاية ${name} (${w}) وإرسال الرموز إلى ${email}`, w);
   await saveCloudState();
-
   await sendEmailBridge({
     type: "ACCESS_CODE", to: email,
-    subject: `وزارة الشباب والرياضة | بيانات الدخول الرسمية لمديرية ولاية ${name}`,
-    body: `تجدون رفقته بيانات الدخول السرية لمنصة AssociaTech-DZ:\n\n1. حساب مكتب الجمعيات:\nالمستخدم: ${bureauUser}\nالرمز: ${bureauCode}\n\n2. حساب مدير الشباب والرياضة:\nالمستخدم: ${dirUser}\nالرمز: ${dirCode}`
+    subject: `وزارة الشباب والرياضة | بيانات الدخول لمديرية ${name}`,
+    body: `مكتب الجمعيات: ${bUser} / ${bCode}\nمدير الشباب والرياضة: ${dUser} / ${dCode}`
   });
-
-  alert(`✅ تم إنشاء حسابات مديرية (${name}) وإرسال الرموز السرية مباشرة إلى الإيميل المعتمد (${email}) دون إظهارها على الشاشة.`);
+  alert(`✅ تم إنشاء مديرية (${name}) وإرسال الرموز مباشرة للإيميل المعتمد.`);
   renderAll();
 }
 
 function openKpiBreakdown(metricType, title) {
-  document.getElementById("kpiModalTitle").textContent = `تفاصيل حسب الولاية: ${title}`;
-  const tbody = document.getElementById("kpiModalBody");
-  tbody.innerHTML = state.directorates.map(d => {
-    const wAssocs = state.associations.filter(a => a.wilaya === d.wilaya).length;
-    const wResults = state.results.filter(r => r.wilaya === d.wilaya);
-    let val = 0, total = Math.max(wAssocs, 1);
-    if (metricType === "ACCREDITED") { val = wResults.filter(r => r.accredited).length; }
-    else if (metricType === "QUORUM") { val = wResults.filter(r => r.quorumReached).length; total = Math.max(wResults.length, 1); }
-    else if (metricType === "ASSOC") { val = wAssocs; total = Math.max(state.associations.length, 1); }
-    const pct = ((val / total) * 100).toFixed(1);
-    return `<tr><td>${d.wilaya} - ${d.name}</td><td>${total}</td><td><b>${val}</b></td><td>${pct}%</td></tr>`;
+  document.getElementById("genericModalTitle").textContent = `تفاصيل حسب الولاية: ${title}`;
+  const rows = state.directorates.map(d => {
+    const wA = state.associations.filter(a => a.wilaya === d.wilaya).length;
+    const wR = state.results.filter(r => r.wilaya === d.wilaya);
+    let val = 0, total = Math.max(wA, 1);
+    if (metricType === "ACCREDITED") val = wR.filter(r => r.accredited).length;
+    else if (metricType === "QUORUM") { val = wR.filter(r => r.quorumReached).length; total = Math.max(wR.length, 1); }
+    else { val = wA; total = Math.max(state.associations.length, 1); }
+    return `<tr><td>${d.wilaya} - ${d.name}</td><td>${total}</td><td><b>${val}</b></td><td>${((val/total)*100).toFixed(1)}%</td></tr>`;
   }).join("");
-  document.getElementById("kpiModal").classList.remove("hidden");
+  document.getElementById("genericModalBody").innerHTML = `<table><thead><tr><th>الولاية</th><th>المجموع</th><th>القيمة</th><th>النسبة</th></tr></thead><tbody>${rows}</tbody></table>`;
+  document.getElementById("genericModal").classList.remove("hidden");
 }
 
-// ==================== العرض والتحديث (Render) ====================
+function viewFullPVReport(resId) {
+  const r = state.results.find(x => x.id === resId); if (!r) return;
+  document.getElementById("genericModalTitle").textContent = `تقرير المحضر الرسمي — ${r.assocName}`;
+  document.getElementById("genericModalBody").innerHTML = `
+    <div class="pv-doc">
+      <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:8px;">
+        <b>الجمهورية الجزائرية الديمقراطية الشعبية — وزارة الشباب والرياضة</b><br>
+        مديرية الشباب والرياضة لولاية (${r.wilaya}) — محضر جمعية عامة (${r.type})
+      </div>
+      <p><b>الجمعية:</b> ${r.assocName} | <b>التاريخ:</b> ${r.date}</p>
+      <p><b>الحضور والنصاب:</b> ${r.presentCount}/${r.totalPaid} (${r.quorumReached ? "نصاب مكتمل ✅" : "غير مكتمل ❌"})</p>
+      <p><b>الرئيس المنتخب:</b> ${r.electedPresident?.name || "—"}</p>
+      <p><b>تأشيرة المفتشية:</b> ${r.inspectionVisa || "—"} | <b>تاريخ الاعتماد:</b> ${r.accreditedAt || "—"}</p>
+      <p><b>الوثائق المعاينة:</b> ${(r.verifiedDocs || []).join("، ")}</p>
+    </div>
+    <button class="btn-outline" style="margin-top:10px;" onclick="window.print()">🖨️ طباعة التقرير</button>
+  `;
+  document.getElementById("genericModal").classList.remove("hidden");
+}
+
+// العرض والتحديث
 function renderAll() {
   if (!currentUser) return;
   const w = currentUser.wilaya;
-
-  // 1. جدول الجمعيات
   const myAssocs = state.associations.filter(a => a.wilaya === w);
-  document.getElementById("assocTableBody").innerHTML = myAssocs.map(a => `
-    <tr>
-      <td><b>${a.name}</b></td><td>${a.accreditation}</td><td><code>${a.username}</code></td>
-      <td>${a.email}</td><td>••••••••</td>
-      <td><button class="btn-warning btn-sm" onclick="renewAssocCode('${a.id}')">🔄 تجديد وإرسال للإيميل</button></td>
-    </tr>`).join("") || `<tr><td colspan="6">لا توجد جمعيات مسجلة بعد.</td></tr>`;
-
-  // قائمة الإشعارات المستهدفة
-  document.getElementById("notifyTarget").innerHTML =
-    `<option value="ALL">جميع الجمعيات المسجلة بالولاية (${myAssocs.length})</option>` +
-    myAssocs.map(a => `<option value="${a.id}">${a.name}</option>`).join("");
-
-  // 2. جدول الممثلين
   const myReps = state.representatives.filter(r => r.wilaya === w);
-  document.getElementById("repsTableBody").innerHTML = myReps.map(r => `
-    <tr>
-      <td>${r.name}</td><td><code>${maskNin(r.nin)}</code></td><td>${r.email}</td>
-      <td><span class="badge ${r.status==='APPROVED'?'badge-ok':r.status==='REJECTED'?'badge-danger':'badge-warn'}">${r.status}</span></td>
-      <td>
-        ${r.status==='PENDING' ? `<button class="btn-success btn-sm" onclick="setRepStatus('${r.id}','APPROVED')">موافقة</button>
-        <button class="btn-danger btn-sm" onclick="setRepStatus('${r.id}','REJECTED')">رفض</button>` : "—"}
-      </td>
-    </tr>`).join("");
-
-  document.getElementById("approvedRepSelect").innerHTML =
-    `<option value="">-- اختر ممثلاً معتمداً --</option>` +
-    myReps.filter(r => r.status === "APPROVED").map(r => `<option value="${r.id}">${r.name}</option>`).join("");
-
-  // 3. قائمة الملفات
   const myDossiers = state.dossiers.filter(d => d.wilaya === w);
-  const dSel = document.getElementById("dossierSelect");
-  const prevD = dSel.value;
-  dSel.innerHTML = `<option value="">-- اختر ملف جمعية --</option>` +
-    myDossiers.map(d => `<option value="${d.id}">${d.assocName} (${d.type})</option>`).join("");
+  const myResults = state.results.filter(r => r.wilaya === w);
+  const myAppeals = state.appeals.filter(a => a.wilaya === w);
+
+  document.getElementById("assocTableBody").innerHTML = myAssocs.map(a => `
+    <tr><td><b>${a.name}</b></td><td>${a.accreditation}</td><td><code>${a.username}</code></td><td>${a.email}</td><td>••••••••</td>
+    <td><button class="btn-warning btn-sm" onclick="renewAssocCode('${a.id}')">🔄 تجديد</button></td></tr>`).join("");
+
+  document.getElementById("notifyTarget").innerHTML = `<option value="ALL">جميع الجمعيات (${myAssocs.length})</option>` + myAssocs.map(a => `<option value="${a.id}">${a.name}</option>`).join("");
+  document.getElementById("appealDossierSelect").innerHTML = myDossiers.map(d => `<option value="${d.id}">${d.assocName} (${d.type})</option>`).join("");
+
+  document.getElementById("repsTableBody").innerHTML = myReps.map(r => `
+    <tr><td>${r.name}</td><td><code>${maskNin(r.nin)}</code></td><td>${r.email}</td>
+    <td><span class="badge ${r.status==='APPROVED'?'badge-ok':r.status==='REJECTED'?'badge-danger':'badge-warn'}">${r.status}</span></td>
+    <td>${r.status==='PENDING' ? `<button class="btn-success btn-sm" onclick="setRepStatus('${r.id}','APPROVED')">موافقة</button> <button class="btn-danger btn-sm" onclick="setRepStatus('${r.id}','REJECTED')">رفض</button>` : "—"}</td></tr>`).join("");
+
+  document.getElementById("approvedRepSelect").innerHTML = `<option value="">-- اختر ممثلاً معتمداً --</option>` + myReps.filter(r => r.status === "APPROVED").map(r => `<option value="${r.id}">${r.name}</option>`).join("");
+
+  const dSel = document.getElementById("dossierSelect"), prevD = dSel.value;
+  dSel.innerHTML = `<option value="">-- اختر ملف جمعية --</option>` + myDossiers.map(d => `<option value="${d.id}">${d.assocName} (${d.type})</option>`).join("");
   if (prevD) dSel.value = prevD;
   renderSelectedDossier();
 
-  // 4. قائمة النتائج
-  const myResults = state.results.filter(r => r.wilaya === w);
-  const rSel = document.getElementById("resultSelect");
-  const prevR = rSel.value;
-  rSel.innerHTML = `<option value="">-- اختر نتيجة جلسة للتدقيق --</option>` +
-    myResults.map(r => `<option value="${r.id}">${r.assocName} (${r.type}) ${r.accredited ? "✅ معتمد" : "⏳ قيد التدقيق"}</option>`).join("");
+  document.getElementById("bureauAppealsBody").innerHTML = myAppeals.map(a => `
+    <tr><td>${a.assocName}</td><td>${a.appellant}<br><small>${a.email}</small></td>
+    <td>${a.subject}<br><small>📎 ${a.attachmentName || "تعليل كتابي"}</small></td>
+    <td><span class="badge ${a.status==='ACCEPTED'?'badge-ok':a.status==='REJECTED'?'badge-danger':'badge-warn'}">${a.status}</span></td>
+    <td>${a.decisionNote || "بانتظار قرار المدير"}</td></tr>`).join("") || `<tr><td colspan="5">لا توجد طعون مسجلة.</td></tr>`;
+
+  const rSel = document.getElementById("resultSelect"), prevR = rSel.value;
+  rSel.innerHTML = `<option value="">-- اختر نتيجة جلسة --</option>` + myResults.map(r => `<option value="${r.id}">${r.assocName} (${r.type}) ${r.accredited ? "✅" : "⏳"}</option>`).join("");
   if (prevR) rSel.value = prevR;
   renderSelectedResult();
 
-  // 5. سجل الإشعارات
-  document.getElementById("notificationsHistory").innerHTML = state.notifications
-    .filter(n => n.wilaya === w)
-    .map(n => `<div class="alert-box alert-info"><b>${n.title}</b> (${n.sentAt} — ${n.count} جمعية)<br>${n.body}</div>`)
-    .join("") || "<p style='color:var(--muted)'>لا توجد إشعارات مرسلة بعد.</p>";
+  document.getElementById("notificationsHistory").innerHTML = state.notifications.filter(n => n.wilaya === w).map(n => `<div class="alert-box alert-info"><b>${n.title}</b> (${n.sentAt})<br>${n.body}</div>`).join("");
 
-  // 6. فضاء مدير الشباب والرياضة
   if (currentUser.role === "DJS-DIRECTOR") {
-    const accCount = myResults.filter(r => r.accredited).length;
     document.getElementById("dirKpis").innerHTML = `
       <div class="kpi-card"><div class="kpi-val">${myAssocs.length}</div><div class="kpi-sub">الجمعيات المسجلة</div></div>
       <div class="kpi-card"><div class="kpi-val">${myResults.length}</div><div class="kpi-sub">الجمعيات المنعقدة</div></div>
-      <div class="kpi-card"><div class="kpi-val">${accCount}</div><div class="kpi-sub">المحاضر المعتمدة</div></div>
-      <div class="kpi-card"><div class="kpi-val">${state.appeals.filter(a=>a.wilaya===w && a.status==='PENDING').length}</div><div class="kpi-sub">طعون قيد الدراسة</div></div>
-    `;
-    document.getElementById("appealsTableBody").innerHTML = state.appeals.filter(a => a.wilaya === w).map(a => `
-      <tr>
-        <td>${a.assocName}</td><td>${a.appellant}</td><td>${a.subject}</td>
-        <td><span class="badge ${a.status==='ACCEPTED'?'badge-ok':a.status==='REJECTED'?'badge-danger':'badge-warn'}">${a.status}</span> ${a.decisionNote}</td>
-        <td>${a.status==='PENDING' ? `<button class="btn-success btn-sm" onclick="decideAppeal('${a.id}','ACCEPTED')">قبول</button> <button class="btn-danger btn-sm" onclick="decideAppeal('${a.id}','REJECTED')">رفض</button>` : "تم البت"}</td>
-      </tr>`).join("");
-    document.getElementById("wilayaAuditBody").innerHTML = state.auditLogs.filter(l => l.wilaya === w).map(l =>
-      `<tr><td>${l.timestamp}</td><td>${l.actor}</td><td><code>${l.action}</code></td><td>${l.details}</td></tr>`
-    ).join("");
+      <div class="kpi-card"><div class="kpi-val">${myResults.filter(r=>r.accredited).length}</div><div class="kpi-sub">المحاضر المعتمدة</div></div>
+      <div class="kpi-card"><div class="kpi-val">${myAppeals.filter(a=>a.status==='PENDING').length}</div><div class="kpi-sub">طعون تنتظر البت</div></div>`;
+    document.getElementById("appealsTableBody").innerHTML = myAppeals.map(a => `
+      <tr><td>${a.assocName}</td><td>${a.appellant}<br><small>${maskNin(a.nin)}</small></td>
+      <td>${a.subject}<br><small>📎 ${a.attachmentName || "تعليل كتابي"}</small></td>
+      <td><span class="badge ${a.status==='ACCEPTED'?'badge-ok':a.status==='REJECTED'?'badge-danger':'badge-warn'}">${a.status}</span><br><small>${a.decisionNote}</small></td>
+      <td>${a.status==='PENDING' ? `<button class="btn-success btn-sm" onclick="decideAppeal('${a.id}','ACCEPTED')">قبول وإضافة</button> <button class="btn-danger btn-sm" onclick="decideAppeal('${a.id}','REJECTED')">رفض</button>` : "تم البت"}</td></tr>`).join("");
+    document.getElementById("wilayaAuditBody").innerHTML = state.auditLogs.filter(l => l.wilaya === w && l.action !== "LOGIN").map(l =>
+      `<tr><td>${l.timestamp}</td><td>${l.actor}</td><td><code>${l.action}</code></td><td>${l.details}</td></tr>`).join("");
   }
 
-  // 7. فضاء الوزارة والوزير
   if (currentUser.role === "MJS-ADMIN" || currentUser.role === "MJS-MINISTER") {
-    const totalA = state.associations.length;
-    const totalR = state.results.length;
+    const totalA = state.associations.length, totalR = state.results.length;
     const accR = state.results.filter(r => r.accredited).length;
     const quoR = state.results.filter(r => r.quorumReached).length;
-    const accPct = totalA ? ((accR / totalA) * 100).toFixed(1) : 0;
-    const quoPct = totalR ? ((quoR / totalR) * 100).toFixed(1) : 0;
-
-    // كشف تعدد العهدات (NIN)
-    const ninMap = {};
-    const conflicts = [];
+    const ninMap = {}, conflicts = [];
     state.results.filter(r => r.accredited && r.electedPresident).forEach(r => {
       const n = r.electedPresident.nin;
-      if (ninMap[n] && ninMap[n] !== r.assocName) conflicts.push(`${r.electedPresident.name} (${maskNin(n)}) منتخب في: ${ninMap[n]} و ${r.assocName}`);
+      if (ninMap[n] && ninMap[n] !== r.assocName) conflicts.push(`${r.electedPresident.name} (${maskNin(n)}): ${ninMap[n]} و ${r.assocName}`);
       ninMap[n] = r.assocName;
     });
-    const cBox = document.getElementById("conflictAlertBox");
-    if (conflicts.length > 0) {
-      cBox.classList.remove("hidden");
-      cBox.innerHTML = `🚨 <b>تنبيه تعدد عهدات (NIN):</b><br>` + conflicts.join("<br>");
-    } else cBox.classList.add("hidden");
+
+    ["conflictAlertBox", "ministerConflictBox"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        if (conflicts.length) { el.classList.remove("hidden"); el.innerHTML = `🚨 <b>اختلال — تعدد عهدات (NIN):</b><br>` + conflicts.join("<br>"); }
+        else el.classList.add("hidden");
+      }
+    });
 
     document.getElementById("mjsKpis").innerHTML = `
-      <div class="kpi-card" onclick="openKpiBreakdown('ASSOC','الجمعيات المسجلة')"><div class="kpi-val">${totalA}</div><div class="kpi-sub">إجمالي الجمعيات (اضغط للتفاصيل)</div></div>
-      <div class="kpi-card" onclick="openKpiBreakdown('ACCREDITED','المحاضر المعتمدة')"><div class="kpi-val">${accR} <small>(${accPct}%)</small></div><div class="kpi-sub">المحاضر المعتمدة وطنياً</div></div>
-      <div class="kpi-card" onclick="openKpiBreakdown('QUORUM','النصاب القانوني')"><div class="kpi-val">${quoR} <small>(${quoPct}%)</small></div><div class="kpi-sub">جمعيات منعقدة بنصاب</div></div>
-      <div class="kpi-card"><div class="kpi-val" style="color:${conflicts.length?'#b91c1c':'#15803d'}">${conflicts.length}</div><div class="kpi-sub">تنبيهات تعدد العهدات</div></div>
-    `;
+      <div class="kpi-card" onclick="openKpiBreakdown('ASSOC','الجمعيات المسجلة')"><div class="kpi-val">${totalA}</div><div class="kpi-sub">إجمالي الجمعيات</div></div>
+      <div class="kpi-card" onclick="openKpiBreakdown('ACCREDITED','المحاضر المعتمدة')"><div class="kpi-val">${accR} <small>(${totalA?((accR/totalA)*100).toFixed(1):0}%)</small></div><div class="kpi-sub">المحاضر المعتمدة</div></div>
+      <div class="kpi-card" onclick="openKpiBreakdown('QUORUM','النصاب القانوني')"><div class="kpi-val">${quoR} <small>(${totalR?((quoR/totalR)*100).toFixed(1):0}%)</small></div><div class="kpi-sub">انعقاد بنصاب</div></div>
+      <div class="kpi-card"><div class="kpi-val" style="color:${conflicts.length?'#b91c1c':'#15803d'}">${conflicts.length}</div><div class="kpi-sub">اختلالات تعدد العهدات</div></div>`;
 
     document.getElementById("nationalPvBody").innerHTML = state.results.filter(r => r.accredited).map(r => `
-      <tr>
-        <td>${r.wilaya}</td><td><b>${r.assocName}</b></td><td>${r.type}</td>
-        <td>${r.accreditedAt || r.date}</td><td>${r.inspectionVisa || "—"}</td>
-        <td><button class="btn-outline btn-sm" onclick="alert('الرئيس المنتخب: ${r.electedPresident?.name || "—"}\\nالتأشيرة: ${r.inspectionVisa}\\nالوثائق: ${(r.verifiedDocs||[]).join("، ")}')">عرض</button></td>
-      </tr>`).join("") || `<tr><td colspan="6">لا توجد محاضر معتمدة مرفوعة بعد.</td></tr>`;
+      <tr><td>${r.wilaya}</td><td><b>${r.assocName}</b></td><td>${r.type}</td><td>${r.accreditedAt}</td><td>${r.inspectionVisa}</td>
+      <td><button class="btn-outline btn-sm" onclick="viewFullPVReport('${r.id}')">📄 عرض التقرير</button></td></tr>`).join("") || `<tr><td colspan="6">لا توجد محاضر معتمدة بعد.</td></tr>`;
 
     document.getElementById("djsListBody").innerHTML = state.directorates.map(d =>
-      `<tr><td>${d.wilaya} - ${d.name}</td><td><code>${d.bureauUser}</code></td><td><code>${d.directorUser}</code></td><td>${d.email}</td><td>الرموز مخفية 🔒</td></tr>`
-    ).join("");
+      `<tr><td>${d.wilaya} - ${d.name}</td><td><code>${d.bureauUser}</code></td><td><code>${d.directorUser}</code></td><td>${d.email}</td><td>الرموز مخفية 🔒</td></tr>`).join("");
 
-    renderCentralAudit();
+    if (currentUser.role === "MJS-MINISTER") {
+      document.getElementById("ministerAppealsBody").innerHTML = state.appeals.map(a => `
+        <tr><td>${a.wilaya}</td><td>${a.assocName}</td><td>${a.appellant}</td><td>${a.subject}</td>
+        <td><span class="badge ${a.status==='ACCEPTED'?'badge-ok':a.status==='REJECTED'?'badge-danger':'badge-warn'}">${a.status}</span> ${a.decisionNote}</td></tr>`).join("");
+      renderMinisterAudit();
+    }
   }
 }
 
@@ -1153,19 +1070,22 @@ function renderSelectedDossier() {
   const area = document.getElementById("dossierDetailsArea");
   if (!d) return area.classList.add("hidden");
   area.classList.remove("hidden");
-
   const paid = d.members.filter(m => m.paid).length;
-  const quorum = Math.ceil((paid * 2) / 3);
-  document.getElementById("dossierMetaInfo").innerHTML =
-    `<b>${d.assocName}</b> (${d.type}) | إجمالي الأعضاء: <b>${d.members.length}</b> | المسددون: <b>${paid}</b> | النصاب القانوني (2/3): <b>${quorum}</b>`;
+  document.getElementById("dossierMetaInfo").innerHTML = `<b>${d.assocName}</b> (${d.type}) | الأعضاء: <b>${d.members.length}</b> | المسددون: <b>${paid}</b> | النصاب (2/3): <b>${Math.ceil(paid*2/3)}</b>`;
+
+  const locked = d.type === "AGE" && hasPendingAppealsFor(d.assocId, d.assocName);
+  const lockAlert = document.getElementById("dossierAppealLockAlert");
+  if (locked) {
+    lockAlert.classList.remove("hidden");
+    lockAlert.textContent = "⛔ هذه الجمعية الانتخابية مقفولة مؤقتاً: يوجد طعن قيد الدراسة لدى مدير الشباب والرياضة.";
+  } else lockAlert.classList.add("hidden");
+  document.getElementById("dispatchCloudBtn").disabled = locked;
+  document.getElementById("dispatchJsonBtn").disabled = locked;
 
   document.getElementById("membersTableBody").innerHTML = d.members.map((m, idx) => `
-    <tr>
-      <td>${m.name}</td><td><code>${maskNin(m.nin)}</code></td>
-      <td>${m.email || "—"}<br><small>${m.phone || "—"}</small></td>
-      <td>${m.paid ? '<span class="badge badge-ok">مسدّد ✅</span>' : '<span class="badge badge-danger">غير مسدّد ❌</span>'}</td>
-      <td><button class="btn-danger btn-sm" onclick="strikeMember('${d.id}', ${idx})">شطب بتعليل</button></td>
-    </tr>`).join("");
+    <tr><td>${m.name}</td><td><code>${maskNin(m.nin)}</code></td><td>${m.email||"—"}<br><small>${m.phone||"—"}</small></td>
+    <td>${m.paid?'<span class="badge badge-ok">مسدّد ✅</span>':'<span class="badge badge-danger">غير مسدّد ❌</span>'}</td>
+    <td><button class="btn-danger btn-sm" onclick="strikeMember('${d.id}', ${idx})">شطب بتعليل</button></td></tr>`).join("");
 }
 
 function renderSelectedResult() {
@@ -1173,44 +1093,42 @@ function renderSelectedResult() {
   const area = document.getElementById("resultVerifyArea");
   if (!r) return area.classList.add("hidden");
   area.classList.remove("hidden");
-
   const assoc = state.associations.find(a => a.id === r.assocId);
   if (assoc) document.getElementById("pvAssocEmail").value = assoc.email || "";
 
-  document.getElementById("resultSummaryBox").innerHTML =
-    `<b>${r.assocName}</b> (${r.type}) | الحضور: <b>${r.presentCount}/${r.totalPaid}</b> | بصمة النزاهة: <code>${r.checksum}</code> | الحالة: <b>${r.accredited ? "معتمد ومرفوع ✅" : "بانتظار مطابقة المفتشية ⏳"}</b>`;
+  const locked = r.type === "AGE" && hasPendingAppealsFor(r.assocId, r.assocName);
+  const lockAlert = document.getElementById("resultAppealLockAlert");
+  if (locked) {
+    lockAlert.classList.remove("hidden");
+    lockAlert.textContent = "⛔ لا يمكن اعتماد هذه الجمعية الانتخابية قبل البت في جميع الطعون العالقة لدى مدير الشباب والرياضة.";
+  } else lockAlert.classList.add("hidden");
+  validateAccreditationLock();
 
+  document.getElementById("resultSummaryBox").innerHTML = `<b>${r.assocName}</b> (${r.type}) | الحضور: <b>${r.presentCount}/${r.totalPaid}</b> | الحالة: <b>${r.accredited ? "معتمد ومرفوع ✅" : "بانتظار الاعتماد ⏳"}</b>`;
   document.getElementById("pvPreviewBox").innerHTML = `
-    <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:12px;">
-      <b>الجمهورية الجزائرية الديمقراطية الشعبية</b><br>
-      وزارة الشباب والرياضة — مديرية الشباب والرياضة (ولاية ${r.wilaya})<br>
-      <h3>محضر رسمي للجمعية العامة (${r.type})</h3>
-    </div>
-    <p><b>الجمعية:</b> ${r.assocName} | <b>التاريخ:</b> ${r.date}</p>
-    <p><b>النصاب القانوني:</b> ${r.quorumReached ? "مكتمل ✅" : "غير مكتمل ❌"} (${r.presentCount} حاضر من أصل ${r.totalPaid} مسدّد)</p>
-    <p><b>الرئيس المنتخب:</b> ${r.electedPresident ? r.electedPresident.name : "—"}</p>
-    ${r.accredited ? `<hr><p><b>توثيق مطابقة المفتشية:</b> ${r.inspectionVisa} (${r.accreditedAt})</p>
-    <p><b>الوثائق المعاينة:</b> ${(r.verifiedDocs || []).join("، ")}</p>` : ""}
-    <hr>
-    <p style="font-size:0.82rem; color:#475569;"><b>ملحق رقم (01) — سجل الأكواد السرية للتصويت:</b> ${(r.secretCodes || []).join(" | ")}</p>
-  `;
+    <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:8px;"><b>محضر رسمي للجمعية العامة (${r.type})</b></div>
+    <p><b>الجمعية:</b> ${r.assocName} | <b>التاريخ:</b> ${r.date} | <b>الرئيس المنتخب:</b> ${r.electedPresident?.name || "—"}</p>
+    ${r.accredited ? `<p><b>تأشيرة المفتشية:</b> ${r.inspectionVisa} (${r.accreditedAt})</p>` : ""}`;
 }
 
-function renderCentralAudit() {
+function renderMinisterAudit() {
   const q = (document.getElementById("auditSearch")?.value || "").toLowerCase();
   const wf = (document.getElementById("auditWilayaFilter")?.value || "").trim();
+  // استبعاد تسجيلات الدخول (LOGIN) تماماً من فضاء الوزير
   const rows = state.auditLogs.filter(l =>
+    l.action !== "LOGIN" &&
     (!wf || l.wilaya === wf) &&
     (!q || `${l.actor} ${l.action} ${l.details}`.toLowerCase().includes(q))
   );
   const el = document.getElementById("centralAuditBody");
   if (el) el.innerHTML = rows.map(l =>
-    `<tr><td>${l.timestamp}</td><td>${l.wilaya}</td><td>${l.actor}</td><td>${l.role}</td><td><code>${l.action}</code></td><td>${l.details}</td></tr>`
-  ).join("");
+    `<tr><td>${l.timestamp}</td><td>${l.wilaya}</td><td>${l.actor}</td><td><code>${l.action}</code></td><td>${l.details}</td></tr>`
+  ).join("") || `<tr><td colspan="5">لا توجد اختلالات أو عمليات مسجلة.</td></tr>`;
 }
 
-// التشغيل الأولي
+// تشغيل أولي + مزامنة آلية كل 30 ثانية
 loadCloudState();
+setInterval(() => { if (currentUser) loadCloudState(false); }, 30000);
 </script>
 </body>
 </html>
